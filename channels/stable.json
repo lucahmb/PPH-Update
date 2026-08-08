@@ -1,19 +1,19 @@
 {
   "product": "pph-funktest",
   "channel": "stable",
-  "version": "2.9.2",
+  "version": "2.9.4",
   "released": "2026-08-09",
-  "build_name": "PPH Network Suite 2.9.2 · Restart Fix",
+  "build_name": "PPH Network Suite 2.9.4 · Restart Fix Stable",
   "repository": "lucahmb/PPH-Update",
-  "package_url": "https://raw.githubusercontent.com/lucahmb/PPH-Update/main/packages/v2.9.2/pph-update-2.9.2-restart-fix.tar.gz",
-  "sha256": "abc4dc96514a0348ec04418c8c2e5febde9b3923d448202eaf84eb5339ac3cfb",
-  "min_version": "2.9.1",
+  "package_url": "https://raw.githubusercontent.com/lucahmb/PPH-Update/main/packages/v2.9.4/pph-update-2.9.4-restart-fix-stable.tar.gz",
+  "sha256": "feb4e2dddba11deb3abd38b599f421d048502f36874ad95d4b04b6eed3c31a88",
+  "min_version": "2.9.3",
   "max_version": "2.9.99",
   "notes": [
-    "Fix für den PPH-Neustart nach Display-Updates",
-    "Installiert pph-hub, pph-status und pph-monitor als User-Services",
-    "Restart-Helper läuft unabhängig vom aktuellen UI-Prozess",
-    "Fallback auf start_pph_hub.sh, falls der Hub-Service nicht startet",
+    "Offizieller Restart-Fix jetzt als 2.9.4 Stable",
+    "Permanenter CHECK UPDATES Button aus 2.9.3 bleibt erhalten",
+    "Robuster PPH-Neustart nach Display-Updates über separaten Restart-Helper",
+    "Fallback auf start_pph_hub.sh, falls pph-hub.service nicht zurückkommt",
     "Keine Änderung an Messlogik oder Hardwarekonfiguration"
   ]
 }
