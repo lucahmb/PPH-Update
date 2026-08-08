@@ -5,15 +5,14 @@
   "released": "2026-08-09",
   "build_name": "PPH Network Suite 2.9.4 · Restart Fix Stable",
   "repository": "lucahmb/PPH-Update",
-  "package_url": "https://raw.githubusercontent.com/lucahmb/PPH-Update/main/packages/v2.9.4/pph-update-2.9.4-restart-fix-stable.tar.gz",
-  "sha256": "feb4e2dddba11deb3abd38b599f421d048502f36874ad95d4b04b6eed3c31a88",
+  "package_url": "https://raw.githubusercontent.com/lucahmb/PPH-Update/main/packages/v2.9.4/pph-update-2.9.4-promotion.tar.gz",
+  "sha256": "dfb4c52498b6b461967a003ba6a9d3797027c35682c983c4b326baceaeac65e5",
   "min_version": "2.9.3",
   "max_version": "2.9.99",
   "notes": [
-    "Offizieller Restart-Fix jetzt als 2.9.4 Stable",
+    "Offizieller Restart-Fix als 2.9.4 Stable",
     "Permanenter CHECK UPDATES Button aus 2.9.3 bleibt erhalten",
-    "Robuster PPH-Neustart nach Display-Updates über separaten Restart-Helper",
-    "Fallback auf start_pph_hub.sh, falls pph-hub.service nicht zurückkommt",
+    "Verifiziertes Promotion-Paket für GitHub-Download und Display-Neustart",
     "Keine Änderung an Messlogik oder Hardwarekonfiguration"
   ]
 }
