@@ -1,18 +1,21 @@
 {
   "product": "pph-funktest",
   "channel": "stable",
-  "version": "2.9.4",
+  "version": "3.0.0",
   "released": "2026-08-09",
-  "build_name": "PPH Network Suite 2.9.4 · Restart Fix Stable",
+  "build_name": "PPH 3.0.0 · Control Center UX",
   "repository": "lucahmb/PPH-Update",
-  "package_url": "https://raw.githubusercontent.com/lucahmb/PPH-Update/main/packages/v2.9.4/pph-update-2.9.4-promotion.tar.gz",
-  "sha256": "dfb4c52498b6b461967a003ba6a9d3797027c35682c983c4b326baceaeac65e5",
-  "min_version": "2.9.3",
+  "package_url": "https://raw.githubusercontent.com/lucahmb/PPH-Update/main/packages/v3.0.0/pph-update-3.0.0-control-center.tar.gz",
+  "sha256": "ac4d3ddbb7aec3ef392b1f3023f4a88580413ca5ff8a25f89e1c0a85b019bf00",
+  "min_version": "2.9.4",
   "max_version": "2.9.99",
   "notes": [
-    "Offizieller Restart-Fix als 2.9.4 Stable",
-    "Permanenter CHECK UPDATES Button aus 2.9.3 bleibt erhalten",
-    "Verifiziertes Promotion-Paket für GitHub-Download und Display-Neustart",
-    "Keine Änderung an Messlogik oder Hardwarekonfiguration"
+    "Komplett neue PPH-3.0-Control-Center-Oberfläche",
+    "Feste Navigation: HOME · MEASURE · WIFI · SYSTEM · JOBS · EVENTS · SETTINGS",
+    "Neues Home-Dashboard mit Health, Messstatus, WLAN, Jobs, Events und Updates",
+    "Jobs und Events sind jetzt eigene Touch-Seiten",
+    "WiFi-Übersicht identifiziert Adapter über Hardware-Rolle und Treiber statt feste wlan-Namen",
+    "Bewährtes 2.9.4-Backend bleibt als stabile Basis erhalten",
+    "CHECK UPDATES und robuster PPH-Restart bleiben erhalten"
   ]
 }
