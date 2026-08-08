@@ -1,21 +1,17 @@
 {
   "product": "pph-funktest",
   "channel": "stable",
-  "version": "2.9.0",
-  "released": "2026-08-08",
-  "build_name": "PPH Network Suite 2.9 · GitHub Updates",
+  "version": "2.9.1",
+  "released": "2026-08-09",
+  "build_name": "PPH Network Suite 2.9.1 · Update Pipeline Test",
   "repository": "lucahmb/PPH-Update",
-  "package_url": "https://raw.githubusercontent.com/lucahmb/PPH-Update/main/packages/v2.9.0/pph-update-2.9.0-github-updates.tar.gz",
-  "sha256": "daf5e8ba54041abf8e87be759106cd70e223b56c213edc7fd01ec49ce96029f0",
-  "min_version": "2.8.0",
-  "max_version": "2.8.99",
+  "package_url": "https://raw.githubusercontent.com/lucahmb/PPH-Update/main/packages/v2.9.1/pph-update-2.9.1-display-test.tar.gz",
+  "sha256": "c51f58d001a5b50e4fc72629831ccd23792849a915cb87c49e827f0b3e2989f7",
+  "min_version": "2.9.0",
+  "max_version": "2.9.99",
   "notes": [
-    "GitHub Stable Channel als offizielle Updatequelle",
-    "Automatischer Updatecheck beim PPH-Start",
-    "Updatecheck bei neuen Seiten/Fenstern mit 15-Minuten-Cache",
-    "Täglicher systemd-User-Timer für Updatechecks",
-    "Update-Badge im PPH-Header",
-    "Direkter GitHub-Download mit SHA-256-Prüfung",
-    "Backup, Migrationen, Tests und Rollback bleiben erhalten"
+    "Testrelease für die vollständige GitHub-Updatekette",
+    "Sichtbarer Versionssprung von 2.9.0 auf 2.9.1",
+    "Keine Änderungen an Messlogik oder Hardwarekonfiguration"
   ]
 }
