@@ -1,0 +1,41 @@
+name: Inspect PPH v3 package
+
+on:
+  push:
+    paths:
+      - '.github/workflows/inspect-v3-package.yml'
+
+permissions:
+  contents: write
+
+jobs:
+  inspect:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Inspect v3 package
+        run: |
+          set -euo pipefail
+          PKG="packages/v3.0.0/pph-update-3.0.0-control-center.tar.gz"
+          rm -rf /tmp/pph-v3-inspect
+          mkdir -p /tmp/pph-v3-inspect
+          tar -tzf "$PKG" > package-v3-structure.txt
+          tar -xzf "$PKG" -C /tmp/pph-v3-inspect
+          {
+            echo '=== FILE TREE ==='
+            find /tmp/pph-v3-inspect -maxdepth 4 -type f -printf '%P\n' | sort
+            echo
+            echo '=== MANIFEST-LIKE FILES ==='
+            find /tmp/pph-v3-inspect -maxdepth 4 -type f \( -iname '*manifest*' -o -iname '*.json' -o -iname 'install.sh' -o -iname 'apply*.sh' \) -print | sort | while read -r f; do
+              echo "--- ${f#/tmp/pph-v3-inspect/} ---"
+              cat "$f" || true
+              echo
+            done
+          } > package-v3-inspection.txt
+      - name: Commit inspection
+        run: |
+          git config user.name 'PPH Build Bot'
+          git config user.email 'actions@users.noreply.github.com'
+          git add package-v3-structure.txt package-v3-inspection.txt
+          git commit -m 'Inspect v3 update package format' || exit 0
+          git push
