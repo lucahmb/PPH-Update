@@ -1,0 +1,23 @@
+name: Release PPH 5.0.0
+on:
+  push:
+    paths:
+      - 'src/v5.0.0/**'
+      - '.github/workflows/release-v5.0.0.yml'
+  workflow_dispatch:
+permissions:
+  contents: write
+jobs:
+  release:
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v4
+      - name: Build and validate
+        run: python3 src/v5.0.0/build_release.py
+      - name: Publish stable package
+        run: |
+          git config user.name 'PPH Release Bot'
+          git config user.email 'actions@users.noreply.github.com'
+          git add packages/v5.0.0 channels/stable.json
+          git diff --cached --quiet || git commit -m 'Publish PPH 5.0.0 Field Platform'
+          git push
