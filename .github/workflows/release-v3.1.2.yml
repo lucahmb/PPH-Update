@@ -1,0 +1,25 @@
+name: Release PPH 3.1.2
+
+on:
+  push:
+    paths:
+      - 'src/v3.1.2/**'
+      - '.github/workflows/release-v3.1.2.yml'
+
+permissions:
+  contents: write
+
+jobs:
+  release:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Build and validate
+        run: python3 src/v3.1.2/build_release.py
+      - name: Publish stable package
+        run: |
+          git config user.name "PPH Build Bot"
+          git config user.email "actions@users.noreply.github.com"
+          git add packages/v3.1.2 channels/stable.json
+          git commit -m "Release PPH 3.1.2 Simple Access Control" || exit 0
+          git push
