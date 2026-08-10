@@ -2,10 +2,9 @@
 set -euo pipefail
 
 PPH_DIR="${1:-$HOME/pph-funktest}"
-BASE_CHANNEL_URL="https://raw.githubusercontent.com/lucahmb/PPH-Update/main/channels/stable.json"
+REPO="lucahmb/PPH-Update"
+CHANNEL_API="https://api.github.com/repos/${REPO}/contents/channels/stable.json?ref=main"
 INBOX="$HOME/.local/share/pph/updates/inbox"
-CACHE_BUST="$(date +%s%N)"
-CHANNEL_URL="${BASE_CHANNEL_URL}?cb=${CACHE_BUST}"
 
 if [[ ! -f "$PPH_DIR/pph_update_manager.py" ]]; then
   echo "PPH Updater nicht gefunden: $PPH_DIR/pph_update_manager.py" >&2
@@ -17,11 +16,16 @@ mkdir -p "$INBOX"
 echo "PPH GitHub Bootstrap"
 echo "Projekt: $PPH_DIR"
 
-readarray -t INFO < <(python3 - "$CHANNEL_URL" <<'PY'
+readarray -t INFO < <(python3 - "$CHANNEL_API" <<'PY'
 import json, sys, urllib.request
 url=sys.argv[1]
-req=urllib.request.Request(url, headers={'User-Agent':'PPH-Bootstrap/2','Cache-Control':'no-cache','Pragma':'no-cache'})
-with urllib.request.urlopen(req, timeout=10) as r:
+req=urllib.request.Request(url, headers={
+    'User-Agent':'PPH-Bootstrap/3',
+    'Accept':'application/vnd.github.raw+json',
+    'Cache-Control':'no-cache',
+    'Pragma':'no-cache',
+})
+with urllib.request.urlopen(req, timeout=15) as r:
     data=json.load(r)
 if data.get('product') != 'pph-funktest' or data.get('channel') != 'stable':
     raise SystemExit('Ungültiger Stable Channel')
@@ -35,19 +39,27 @@ PY
 )
 
 VERSION="${INFO[0]}"
-URL="${INFO[1]}"
+RAW_URL="${INFO[1]}"
 SHA="${INFO[2]}"
 PACKAGE="$INBOX/pph-update-$VERSION.tar.gz"
-PACKAGE_URL="${URL}?cb=${CACHE_BUST}"
+
+# Convert GitHub raw package URL to the Contents API endpoint, bypassing raw CDN caching.
+PACKAGE_PATH="${RAW_URL#https://raw.githubusercontent.com/${REPO}/main/}"
+PACKAGE_API="https://api.github.com/repos/${REPO}/contents/${PACKAGE_PATH}?ref=main"
 
 echo "Stable: $VERSION"
 echo "Download …"
 rm -f "$PACKAGE"
-python3 - "$PACKAGE_URL" "$PACKAGE" <<'PY'
+python3 - "$PACKAGE_API" "$PACKAGE" <<'PY'
 import pathlib, sys, urllib.request
 url, target=sys.argv[1], pathlib.Path(sys.argv[2])
-req=urllib.request.Request(url, headers={'User-Agent':'PPH-Bootstrap/2','Cache-Control':'no-cache','Pragma':'no-cache'})
-with urllib.request.urlopen(req, timeout=30) as r, target.open('wb') as f:
+req=urllib.request.Request(url, headers={
+    'User-Agent':'PPH-Bootstrap/3',
+    'Accept':'application/vnd.github.raw+json',
+    'Cache-Control':'no-cache',
+    'Pragma':'no-cache',
+})
+with urllib.request.urlopen(req, timeout=45) as r, target.open('wb') as f:
     while True:
         chunk=r.read(1024*256)
         if not chunk: break
