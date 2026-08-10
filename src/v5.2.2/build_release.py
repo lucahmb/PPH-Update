@@ -52,7 +52,8 @@ OUT_DIR.mkdir(parents=True,exist_ok=True)
 mp=WORK/'manifest.json'; mp.write_text(json.dumps(manifest,indent=2,ensure_ascii=False)+'\n',encoding='utf-8')
 with tarfile.open(OUT,'w:gz') as tf:
     tf.add(mp,arcname='manifest.json')
-    for p in sorted(PAYLOAD.rglob('*')): tf.add(p,arcname='payload/'+p.relative_to(PAYLOAD).as_posix())
+    for p in sorted(x for x in PAYLOAD.rglob('*') if x.is_file()):
+        tf.add(p,arcname='payload/'+p.relative_to(PAYLOAD).as_posix())
 with tarfile.open(OUT,'r:gz') as tf:
     names=set(tf.getnames())
     req={'manifest.json','payload/pph_hub/pph51_ui.py','payload/pph_version.py'}

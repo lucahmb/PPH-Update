@@ -6,7 +6,7 @@
   "build_name": "PPH 5.2.2 · Deep Page Redesign",
   "repository": "lucahmb/PPH-Update",
   "package_url": "https://raw.githubusercontent.com/lucahmb/PPH-Update/main/packages/v5.2.2/pph-update-5.2.2-deep-page-redesign.tar.gz",
-  "sha256": "e1d4c6c33fdfc839a40592e5a0bf15012d9e35fac94db6aaf1416ba13c7aa9b2",
+  "sha256": "c144b0951fe8254f8e6e67b3c19a30c76cae6e5598e4c9c1a9b47f1c30ab5391",
   "min_version": "5.2.0",
   "max_version": "5.2.1",
   "notes": [
