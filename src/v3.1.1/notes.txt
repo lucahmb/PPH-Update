@@ -1,0 +1,1 @@
+Fixes DNS-independent laptop discovery and 12-digit numeric AP credentials.
