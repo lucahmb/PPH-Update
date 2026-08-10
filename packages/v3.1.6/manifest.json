@@ -1,0 +1,102 @@
+{
+  "format": 1,
+  "product": "pph-funktest",
+  "version": "3.1.6",
+  "min_version": "3.1.3",
+  "max_version": "3.1.5",
+  "channel": "stable",
+  "build_name": "PPH 3.1.6 · Direct Upgrade Fix",
+  "released": "2026-08-10",
+  "tests": [
+    "test_upgrade_316.py"
+  ],
+  "features": [
+    "Direktes Upgrade von 3.1.3/3.1.4/3.1.5",
+    "PPH 3.1.4 Field Mode vollständig enthalten",
+    "PPH 3.1.5 Fullscreen-Topbar-Fix enthalten",
+    "Fresh Update Check ohne alten Cache",
+    "Neuer eindeutiger Paketname verhindert alte 3.1.5-Datei"
+  ],
+  "files": [
+    {
+      "path": "fieldctl.py",
+      "sha256": "a1c8342d63c97ed9022c38e00516ca004ea31aba62a522c3e1c5ce5c6eccb869",
+      "mode": "0755"
+    },
+    {
+      "path": "install_field_mode.sh",
+      "sha256": "be809ccbee23dfb38948fb9d5cf1cb8c1345e18522ea02458f13af4d189bd4bf",
+      "mode": "0755"
+    },
+    {
+      "path": "pph_hub/access_point.py",
+      "sha256": "9f3819d3d95cf0e59fdba2c3cb4bd73963cb4d6cae87fb0c89b93d08da98bd01",
+      "mode": "0644"
+    },
+    {
+      "path": "pph_hub/access_ui.py",
+      "sha256": "2ab7063167defca5f8a880b7ca1bd1429c2036df226a72bb841020ec03c18879",
+      "mode": "0644"
+    },
+    {
+      "path": "pph_hub/pph3_app.py",
+      "sha256": "870c8a3a73c6891fa9830343b8e210a7aa394e59ecbf87b4e8794385d2770694",
+      "mode": "0755"
+    },
+    {
+      "path": "pph_hub/pph3_ui.py",
+      "sha256": "e824c003fcee8f01199ffa8849ae2738d0e03dc3c8cf957295ea8385a6f7a6ca",
+      "mode": "0644"
+    },
+    {
+      "path": "pph_version.py",
+      "sha256": "af421bf8f22c4b92e2c4ddd3fe02b0f84c55a341f67fe9a34d3bd55d057d5012",
+      "mode": "0644"
+    },
+    {
+      "path": "start_pph_hub.sh",
+      "sha256": "c61acc0509b731049d7d7cebdcad00cbb602e021315f7452d439c3d824230bd7",
+      "mode": "0755"
+    },
+    {
+      "path": "test_access_point_310.py",
+      "sha256": "1212d3ea80748fa489cdbf696c2be130d8800971958c123accc7332a7a7265df",
+      "mode": "0644"
+    },
+    {
+      "path": "test_access_point_311.py",
+      "sha256": "74bf8db2c409d6d4664a1cd5056c450cf2276513ecee92f74d2fc4b662d9e495",
+      "mode": "0644"
+    },
+    {
+      "path": "test_access_point_313.py",
+      "sha256": "251a1b154d05395f33fded65df8fc7ae455d374196b626e231586bcb54cb2b47",
+      "mode": "0644"
+    },
+    {
+      "path": "test_access_point_314.py",
+      "sha256": "fb4d0b335ade906f55d39d72a98e60f9b912196b6ce62c39ee252c86e1617f41",
+      "mode": "0644"
+    },
+    {
+      "path": "test_github_updates_29.py",
+      "sha256": "5e55f667b61fbe74ed3556f0d12ac469efa917ce964ba3e3e08731fc2416c447",
+      "mode": "0644"
+    },
+    {
+      "path": "test_ui_300.py",
+      "sha256": "5ffca327b6987bb26c296e015544c63b0061da6de83efbfe5698a4cd312deced",
+      "mode": "0644"
+    },
+    {
+      "path": "test_ui_315.py",
+      "sha256": "7b1265b6b9f6fb53f2928b0f552c4d06a852da106bea594b6b8d04140ba57a9c",
+      "mode": "0644"
+    },
+    {
+      "path": "test_upgrade_316.py",
+      "sha256": "f57b61c3a506419ce17f23acaaf1b3deea313062573e5491b35e4a2a1cb78751",
+      "mode": "0644"
+    }
+  ]
+}

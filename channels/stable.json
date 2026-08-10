@@ -1,18 +1,19 @@
 {
   "product": "pph-funktest",
   "channel": "stable",
-  "version": "3.1.5",
+  "version": "3.1.6",
   "released": "2026-08-10",
-  "build_name": "PPH 3.1.5 · UI + Update Refresh Fix",
+  "build_name": "PPH 3.1.6 · Direct Upgrade Fix",
   "repository": "lucahmb/PPH-Update",
-  "package_url": "https://raw.githubusercontent.com/lucahmb/PPH-Update/main/packages/v3.1.5/pph-update-3.1.5-ui-update-fix.tar.gz",
-  "sha256": "476abf61a337a7cf6718454ef0ae74fce50844c0802ef4855ccdc3b4fe7ac029",
+  "package_url": "https://raw.githubusercontent.com/lucahmb/PPH-Update/main/packages/v3.1.6/pph-update-3.1.6-direct-from-313.tar.gz",
+  "sha256": "aa3ac14d09c3ab8118dfe2ac3886cbb725706fa09197a055e216121e179cb472",
   "min_version": "3.1.3",
-  "max_version": "3.1.4",
+  "max_version": "3.1.5",
   "notes": [
-    "Fullscreen Topbar Fix",
-    "Fresh Update Check ohne alten Cache",
-    "Field Mode 3.1.4 enthalten",
-    "Direktes Upgrade von 3.1.3 unterstützt"
+    "Direkt von 3.1.3 installierbar",
+    "Field Mode enthalten",
+    "Fullscreen/UI Fix enthalten",
+    "Fresh Update Check enthalten",
+    "neuer Paketname gegen stale cache"
   ]
 }
