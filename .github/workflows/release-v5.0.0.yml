@@ -1,8 +1,8 @@
-name: Release PPH 5.0.3
+name: Release PPH 5.0.4
 on:
   push:
     paths:
-      - 'src/v5.0.3/**'
+      - 'src/v5.0.4/**'
       - '.github/workflows/release-v5.0.0.yml'
   workflow_dispatch:
 permissions:
@@ -13,11 +13,11 @@ jobs:
     steps:
       - uses: actions/checkout@v4
       - name: Build and validate
-        run: python3 src/v5.0.3/build_release.py
+        run: python3 src/v5.0.4/build_release.py
       - name: Publish stable package
         run: |
           git config user.name 'PPH Release Bot'
           git config user.email 'actions@users.noreply.github.com'
-          git add packages/v5.0.3 channels/stable.json
-          git diff --cached --quiet || git commit -m 'Publish PPH 5.0.3 bottom navigation fix'
+          git add packages/v5.0.4 channels/stable.json
+          git diff --cached --quiet || git commit -m 'Publish PPH 5.0.4 startup navigation fix'
           git push
