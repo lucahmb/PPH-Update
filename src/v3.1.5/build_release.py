@@ -39,13 +39,13 @@ files=[]
 for p in sorted(x for x in PAYLOAD.rglob('*') if x.is_file()):
     rel=p.relative_to(PAYLOAD).as_posix(); mode='0755' if rel in {'start_pph_hub.sh','pph_hub/pph3_app.py','fieldctl.py','install_field_mode.sh'} else '0644'
     files.append({'path':rel,'sha256':sha256(p),'mode':mode})
-manifest={'format':1,'product':'pph-funktest','version':'3.1.5','min_version':'3.1.4','max_version':'3.1.4','channel':'stable','build_name':'PPH 3.1.5 · UI + Update Refresh Fix','released':'2026-08-10','tests':['test_ui_315.py'],'features':['Topbar bleibt auf 800x480 im Vollbild sichtbar','UPDATES/Home/Fullscreen/Close werden rechts fest verankert','Manueller Update-Check erzwingt Fresh-Refresh statt altem Cache','Home und Settings lesen Stable-Version mit Cache-Buster','PPH 3.1.4 Field Mode bleibt vollständig enthalten'],'files':files}
+manifest={'format':1,'product':'pph-funktest','version':'3.1.5','min_version':'3.1.3','max_version':'3.1.4','channel':'stable','build_name':'PPH 3.1.5 · UI + Update Refresh Fix','released':'2026-08-10','tests':['test_ui_315.py'],'features':['Topbar bleibt auf 800x480 im Vollbild sichtbar','UPDATES/Home/Fullscreen/Close werden rechts fest verankert','Manueller Update-Check erzwingt Fresh-Refresh statt altem Cache','Home und Settings lesen Stable-Version mit Cache-Buster','PPH 3.1.4 Field Mode bleibt vollständig enthalten','Direktes Upgrade von PPH 3.1.3 oder 3.1.4 möglich'],'files':files}
 (WORK/'manifest.json').write_text(json.dumps(manifest,ensure_ascii=False,indent=2)+'\n',encoding='utf-8')
 OUT_DIR.mkdir(parents=True,exist_ok=True)
 with tarfile.open(OUT,'w:gz') as tf: tf.add(WORK/'manifest.json',arcname='manifest.json'); tf.add(PAYLOAD,arcname='payload')
 package_sha=sha256(OUT)
 (OUT_DIR/'manifest.json').write_text(json.dumps(manifest,ensure_ascii=False,indent=2)+'\n',encoding='utf-8')
 (OUT_DIR/'sha256.txt').write_text(f'{package_sha}  {OUT.name}\n',encoding='utf-8')
-stable={'product':'pph-funktest','channel':'stable','version':'3.1.5','released':'2026-08-10','build_name':'PPH 3.1.5 · UI + Update Refresh Fix','repository':'lucahmb/PPH-Update','package_url':'https://raw.githubusercontent.com/lucahmb/PPH-Update/main/packages/v3.1.5/pph-update-3.1.5-ui-update-fix.tar.gz','sha256':package_sha,'min_version':'3.1.4','max_version':'3.1.4','notes':['Fullscreen Topbar Fix','Fresh Update Check ohne alten Cache','Field Mode 3.1.4 enthalten']}
+stable={'product':'pph-funktest','channel':'stable','version':'3.1.5','released':'2026-08-10','build_name':'PPH 3.1.5 · UI + Update Refresh Fix','repository':'lucahmb/PPH-Update','package_url':'https://raw.githubusercontent.com/lucahmb/PPH-Update/main/packages/v3.1.5/pph-update-3.1.5-ui-update-fix.tar.gz','sha256':package_sha,'min_version':'3.1.3','max_version':'3.1.4','notes':['Fullscreen Topbar Fix','Fresh Update Check ohne alten Cache','Field Mode 3.1.4 enthalten','Direktes Upgrade von 3.1.3 unterstützt']}
 (ROOT/'channels/stable.json').write_text(json.dumps(stable,ensure_ascii=False,indent=2)+'\n',encoding='utf-8')
 print(f'Built {OUT} sha256={package_sha}')
