@@ -6,12 +6,13 @@
   "build_name": "PPH 3.1.5 · UI + Update Refresh Fix",
   "repository": "lucahmb/PPH-Update",
   "package_url": "https://raw.githubusercontent.com/lucahmb/PPH-Update/main/packages/v3.1.5/pph-update-3.1.5-ui-update-fix.tar.gz",
-  "sha256": "170fd4a3fa6926129651b59b6ed2a2f439c435582aef010d9f08f4d44b416081",
-  "min_version": "3.1.4",
+  "sha256": "476abf61a337a7cf6718454ef0ae74fce50844c0802ef4855ccdc3b4fe7ac029",
+  "min_version": "3.1.3",
   "max_version": "3.1.4",
   "notes": [
     "Fullscreen Topbar Fix",
     "Fresh Update Check ohne alten Cache",
-    "Field Mode 3.1.4 enthalten"
+    "Field Mode 3.1.4 enthalten",
+    "Direktes Upgrade von 3.1.3 unterstützt"
   ]
 }
