@@ -1,17 +1,17 @@
 {
   "product": "pph-funktest",
   "channel": "stable",
-  "version": "5.0.1",
+  "version": "5.0.2",
   "released": "2026-08-10",
-  "build_name": "PPH 5.0.1 · Fieldctl Packaging Hotfix",
+  "build_name": "PPH 5.0.2 · Archive Layout Hotfix",
   "repository": "lucahmb/PPH-Update",
-  "package_url": "https://raw.githubusercontent.com/lucahmb/PPH-Update/main/packages/v5.0.1/pph-update-5.0.1-fieldctl-hotfix.tar.gz",
-  "sha256": "e083f7f0aa55ab147e2a9562803a446c7d9be14102ecda44c9c8de7353c9a907",
+  "package_url": "https://raw.githubusercontent.com/lucahmb/PPH-Update/main/packages/v5.0.2/pph-update-5.0.2-archive-layout-hotfix.tar.gz",
+  "sha256": "4025014bfe3567ba80833fe96740fcee7dedbff67a8d5ebe943f6a1118ce19a8",
   "min_version": "4.2.0",
-  "max_version": "5.0.0",
+  "max_version": "5.0.1",
   "notes": [
-    "Fix fieldctl packaging",
-    "Compatibility alias fielddctl.py",
+    "Fix updater archive layout: payload/...",
+    "Fix missing payload/fieldctl.py error",
     "Full PPH 5.0 Field Platform retained"
   ]
 }

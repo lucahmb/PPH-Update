@@ -1,0 +1,174 @@
+{
+  "format": 1,
+  "product": "pph-funktest",
+  "version": "5.0.2",
+  "min_version": "4.2.0",
+  "max_version": "5.0.1",
+  "channel": "stable",
+  "build_name": "PPH 5.0.2 · Archive Layout Hotfix",
+  "released": "2026-08-10",
+  "features": [
+    "Full PPH 5.0 Field Platform",
+    "Updater-compatible payload/ archive layout",
+    "fieldctl.py guaranteed under payload/",
+    "fielddctl.py compatibility alias",
+    "Tar member validation before publish"
+  ],
+  "files": [
+    {
+      "path": "fieldctl.py",
+      "sha256": "a1c8342d63c97ed9022c38e00516ca004ea31aba62a522c3e1c5ce5c6eccb869",
+      "mode": "0755"
+    },
+    {
+      "path": "fielddctl.py",
+      "sha256": "1bffe11f144dfef417acf310890f90910621586bcf0f44902c2073f9f09bf877",
+      "mode": "0755"
+    },
+    {
+      "path": "install_field_mode.sh",
+      "sha256": "be809ccbee23dfb38948fb9d5cf1cb8c1345e18522ea02458f13af4d189bd4bf",
+      "mode": "0755"
+    },
+    {
+      "path": "pph_hub/access_point.py",
+      "sha256": "9f3819d3d95cf0e59fdba2c3cb4bd73963cb4d6cae87fb0c89b93d08da98bd01",
+      "mode": "0644"
+    },
+    {
+      "path": "pph_hub/access_ui.py",
+      "sha256": "2ab7063167defca5f8a880b7ca1bd1429c2036df226a72bb841020ec03c18879",
+      "mode": "0644"
+    },
+    {
+      "path": "pph_hub/pph32_ui.py",
+      "sha256": "3370234df200e92025296206f2a487a07eb1faae87e65f9828fc213a4df43561",
+      "mode": "0644"
+    },
+    {
+      "path": "pph_hub/pph3_app.py",
+      "sha256": "e540e767e6b101791fb2dfbc2e364ab313dd911a4f932c82e684913a2b95717d",
+      "mode": "0755"
+    },
+    {
+      "path": "pph_hub/pph3_ui.py",
+      "sha256": "4961626d33b466a7e5d15629f659ff282740e87d886636e9fcb936ecbfc20ca2",
+      "mode": "0644"
+    },
+    {
+      "path": "pph_hub/pph411_touch.py",
+      "sha256": "c7d75c48541a5996cd21face26d5547ee5047ec287324ee5371de7208ee2cd09",
+      "mode": "0644"
+    },
+    {
+      "path": "pph_hub/pph412_paged.py",
+      "sha256": "699a77517a9f6004815361717744dd62c278b8c6c9bcb0054a1bfc2e1957898f",
+      "mode": "0644"
+    },
+    {
+      "path": "pph_hub/pph41_ui.py",
+      "sha256": "be1009d87d32d46dbff7891abf8e30dfa70d803838c83db7e0d1610a4f4d03ff",
+      "mode": "0644"
+    },
+    {
+      "path": "pph_hub/pph42_full_ui.py",
+      "sha256": "6cfaab137fdeb137acb1bfabe70b4537e1bc5b3499d3c03fb1bcc3d87a06c221",
+      "mode": "0644"
+    },
+    {
+      "path": "pph_hub/pph4_theme.py",
+      "sha256": "80028e7489677fff4b63f8097de35f062c374614ef667eb2b3d4d3c94170c285",
+      "mode": "0644"
+    },
+    {
+      "path": "pph_hub/pph50_platform.py",
+      "sha256": "a0f71bc71e4d7d5296ac7d90f0833ab11b4a83235e8d316e97c5bfa36816b56a",
+      "mode": "0644"
+    },
+    {
+      "path": "pph_version.py",
+      "sha256": "0633002f1f9f053d0895b616b91e95c22fccfa4cc435b6b9e780f02228b2bcb9",
+      "mode": "0644"
+    },
+    {
+      "path": "start_pph_hub.sh",
+      "sha256": "c61acc0509b731049d7d7cebdcad00cbb602e021315f7452d439c3d824230bd7",
+      "mode": "0755"
+    },
+    {
+      "path": "test_access_point_310.py",
+      "sha256": "1212d3ea80748fa489cdbf696c2be130d8800971958c123accc7332a7a7265df",
+      "mode": "0644"
+    },
+    {
+      "path": "test_access_point_311.py",
+      "sha256": "74bf8db2c409d6d4664a1cd5056c450cf2276513ecee92f74d2fc4b662d9e495",
+      "mode": "0644"
+    },
+    {
+      "path": "test_access_point_313.py",
+      "sha256": "251a1b154d05395f33fded65df8fc7ae455d374196b626e231586bcb54cb2b47",
+      "mode": "0644"
+    },
+    {
+      "path": "test_access_point_314.py",
+      "sha256": "fb4d0b335ade906f55d39d72a98e60f9b912196b6ce62c39ee252c86e1617f41",
+      "mode": "0644"
+    },
+    {
+      "path": "test_github_updates_29.py",
+      "sha256": "5e55f667b61fbe74ed3556f0d12ac469efa917ce964ba3e3e08731fc2416c447",
+      "mode": "0644"
+    },
+    {
+      "path": "test_ui_300.py",
+      "sha256": "5ffca327b6987bb26c296e015544c63b0061da6de83efbfe5698a4cd312deced",
+      "mode": "0644"
+    },
+    {
+      "path": "test_ui_315.py",
+      "sha256": "7b1265b6b9f6fb53f2928b0f552c4d06a852da106bea594b6b8d04140ba57a9c",
+      "mode": "0644"
+    },
+    {
+      "path": "test_ui_317.py",
+      "sha256": "7d128c317d26e420d1e9948181dee317c0df109d52799c087ca563f2948f382e",
+      "mode": "0644"
+    },
+    {
+      "path": "test_ui_320.py",
+      "sha256": "1c7c5f72e39558d078d0358de686c534bdd212da4eb2b86572770a08c4b9a2b7",
+      "mode": "0644"
+    },
+    {
+      "path": "test_ui_400.py",
+      "sha256": "c6b93d683978e2dd9916fa06d8663d40d1d674503052ea8e80e5ddfb35e59387",
+      "mode": "0644"
+    },
+    {
+      "path": "test_ui_410.py",
+      "sha256": "54815efd4a11ef427689c7b354177f572b07089350bedd1d9308ff7168c07ec3",
+      "mode": "0644"
+    },
+    {
+      "path": "test_ui_411.py",
+      "sha256": "044254bb784c3d254ab8b3e28b8e3c353ca0cca75c1abcdd8ca0d02ebcde2650",
+      "mode": "0644"
+    },
+    {
+      "path": "test_ui_412.py",
+      "sha256": "f33c85ca34e5168a1448e8bd110c9f1245a640f8e7c9f82e6334f47c725f082e",
+      "mode": "0644"
+    },
+    {
+      "path": "test_ui_420.py",
+      "sha256": "206b36979984d580e8773858fcd5c577071c1a0c78d038b6120f5bb2b8968fb4",
+      "mode": "0644"
+    },
+    {
+      "path": "test_upgrade_316.py",
+      "sha256": "f57b61c3a506419ce17f23acaaf1b3deea313062573e5491b35e4a2a1cb78751",
+      "mode": "0644"
+    }
+  ]
+}
