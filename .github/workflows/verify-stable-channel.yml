@@ -1,0 +1,40 @@
+name: Verify stable channel UI renders
+
+on:
+  push:
+    paths:
+      - 'channels/stable.json'
+      - 'packages/**'
+      - 'tools/ui_smoke_test.py'
+      - '.github/workflows/verify-stable-channel.yml'
+  workflow_dispatch:
+
+jobs:
+  smoke-test:
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v4
+      - name: Install Tk + Xvfb
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y --no-install-recommends python3-tk xvfb
+      - name: Extract the package channels/stable.json currently points to
+        run: |
+          set -euo pipefail
+          REL=$(python3 -c "import json;print(json.load(open('channels/stable.json'))['package_url'])" | sed 's#.*/packages/#packages/#')
+          echo "Package: $REL"
+          mkdir -p /tmp/stable_payload
+          tar -xzf "$REL" -C /tmp/stable_payload
+      - name: Verify sha256 matches the channel manifest
+        run: |
+          set -euo pipefail
+          python3 - <<'PY'
+          import hashlib, json, glob
+          d = json.load(open('channels/stable.json'))
+          rel = d['package_url'].split('/packages/', 1)[1]
+          actual = hashlib.sha256(open('packages/' + rel, 'rb').read()).hexdigest()
+          assert actual == d['sha256'], f"channel sha256 mismatch: {actual} != {d['sha256']}"
+          print('sha256 OK')
+          PY
+      - name: Render every CORE page of the current top-level UI layer
+        run: xvfb-run -a python3 tools/ui_smoke_test.py /tmp/stable_payload/payload pph_hub/pph51_ui.py
