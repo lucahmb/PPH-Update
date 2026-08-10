@@ -1,17 +1,18 @@
 {
   "product": "pph-funktest",
   "channel": "stable",
-  "version": "5.0.4",
+  "version": "5.1.0",
   "released": "2026-08-10",
-  "build_name": "PPH 5.0.4 · Startup Navigation Fix",
+  "build_name": "PPH 5.1.0 · Wireless Style System UI",
   "repository": "lucahmb/PPH-Update",
-  "package_url": "https://raw.githubusercontent.com/lucahmb/PPH-Update/main/packages/v5.0.4/pph-update-5.0.4-startup-nav-fix.tar.gz",
-  "sha256": "00954641b1a5fb61fe231235929115a1264f8f6e4df5be0cb4a3deccf467c881",
-  "min_version": "5.0.3",
-  "max_version": "5.0.3",
+  "package_url": "https://raw.githubusercontent.com/lucahmb/PPH-Update/main/packages/v5.1.0/pph-update-5.1.0-wireless-style-ui.tar.gz",
+  "sha256": "cdc2fd1d150022f17ce683a36e62e377e27eea83260cda495306c5c71d31c6aa",
+  "min_version": "5.0.4",
+  "max_version": "5.0.4",
   "notes": [
-    "Fix startup TclError invalid command name",
-    "Clear destroyed legacy nav references",
-    "Keep FIELD INTERFACE bottom-nav fix"
+    "Systemwide Wireless Analyzer design",
+    "Large 5-inch nav and no legacy sidebar",
+    "Access Point pairing code/IP restored",
+    "Fix Tkinter Tcl_Obj and destroyed canvas callbacks"
   ]
 }
