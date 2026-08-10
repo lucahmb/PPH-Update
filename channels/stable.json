@@ -1,19 +1,19 @@
 {
   "product": "pph-funktest",
   "channel": "stable",
-  "version": "4.0.0",
+  "version": "4.1.0",
   "released": "2026-08-10",
-  "build_name": "PPH 4.0.0 · Visual Overhaul",
+  "build_name": "PPH 4.1.0 · Visual Relaunch",
   "repository": "lucahmb/PPH-Update",
-  "package_url": "https://raw.githubusercontent.com/lucahmb/PPH-Update/main/packages/v4.0.0/pph-update-4.0.0-visual-overhaul.tar.gz",
-  "sha256": "bfc5824ddabeb23a30b42532fd12c0db8834be51803687d3bdbfe59787f2d82b",
-  "min_version": "3.2.0",
-  "max_version": "3.2.0",
+  "package_url": "https://raw.githubusercontent.com/lucahmb/PPH-Update/main/packages/v4.1.0/pph-update-4.1.0-visual-relaunch.tar.gz",
+  "sha256": "1ce47c5bfaf23415381337068ee703da7f05d2aac9f870e331b5376d3c4ed416",
+  "min_version": "4.0.0",
+  "max_version": "4.0.0",
   "notes": [
-    "Full system visual overhaul",
-    "Animations on all pages",
-    "Wireless Site Analyzer 4.0 shell",
-    "Global legacy-page skin",
-    "Backend unchanged"
+    "Real layout rebuild",
+    "Sidebar navigation",
+    "Wireless redesign",
+    "Network redesign",
+    "System/settings/access relaunch"
   ]
 }
