@@ -1,17 +1,16 @@
 {
   "product": "pph-funktest",
   "channel": "stable",
-  "version": "5.1.1",
+  "version": "5.1.2",
   "released": "2026-08-10",
-  "build_name": "PPH 5.1.1 · Access Point + Connection Flow Fix",
+  "build_name": "PPH 5.1.2 · Startup Crash Fix",
   "repository": "lucahmb/PPH-Update",
-  "package_url": "https://raw.githubusercontent.com/lucahmb/PPH-Update/main/packages/v5.1.1/pph-update-5.1.1-access-point-flow-fix.tar.gz",
-  "sha256": "b362d797190850c9430cbd6623f27292c1ec9856a6a29ec7c7f60b30182b4e88",
+  "package_url": "https://raw.githubusercontent.com/lucahmb/PPH-Update/main/packages/v5.1.2/pph-update-5.1.2-startup-crash-fix.tar.gz",
+  "sha256": "cbf2a2d65727e836bac240cec5f01b5d9dcda92456fc107997961037a907ad17",
   "min_version": "5.1.0",
-  "max_version": "5.1.0",
+  "max_version": "5.1.1",
   "notes": [
-    "Access Point pairing code now populated on the ACCESS card",
-    "Connection Flow INTERNET tile reflects the real uplink state",
-    "PPH 4.2 legacy REPORTS panel no longer errors on missing json import"
+    "Fixes a startup crash (pack/grid geometry manager conflict in two_cards()) that made PPH restart-loop and appear to flicker without ever opening",
+    "Works whether the device is currently on 5.1.0 or 5.1.1"
   ]
 }
