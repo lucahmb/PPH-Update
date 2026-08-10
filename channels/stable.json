@@ -1,16 +1,18 @@
 {
   "product": "pph-funktest",
   "channel": "stable",
-  "version": "5.1.3",
+  "version": "5.2.0",
   "released": "2026-08-10",
-  "build_name": "PPH 5.1.3 · Launcher False-Positive Fix",
+  "build_name": "PPH 5.2.0 · Touch Hub Redesign",
   "repository": "lucahmb/PPH-Update",
-  "package_url": "https://raw.githubusercontent.com/lucahmb/PPH-Update/main/packages/v5.1.3/pph-update-5.1.3-launcher-false-positive-fix.tar.gz",
-  "sha256": "fb1d8c31cd699a9b062d83fde0262a01720b3c4dd73f38228c36ddfc102c3d11",
-  "min_version": "5.1.0",
-  "max_version": "5.1.2",
+  "package_url": "https://raw.githubusercontent.com/lucahmb/PPH-Update/main/packages/v5.2.0/pph-update-5.2.0-touch-hub-redesign.tar.gz",
+  "sha256": "901ed70cb66d0a143fc4df76c333142187d8742ce267e4e60b193ab89cfa5686",
+  "min_version": "5.1.3",
+  "max_version": "5.1.3",
   "notes": [
-    "Fixes a launcher bug where an unrelated process with a relative argv path could be mistaken for an already-running PPH Hub, silently preventing startup",
-    "Applies whether the device is currently on 5.1.0, 5.1.1 or 5.1.2"
+    "Redesigned 5-inch Raspberry Pi touch hub",
+    "Clear six-area navigation with a dedicated category hub",
+    "Larger touch controls and animated visual feedback",
+    "Keeps the 5.1.3 launcher fix and existing backend behavior"
   ]
 }
