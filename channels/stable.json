@@ -6,7 +6,7 @@
   "build_name": "PPH 5.1.2 · Startup Crash Fix",
   "repository": "lucahmb/PPH-Update",
   "package_url": "https://raw.githubusercontent.com/lucahmb/PPH-Update/main/packages/v5.1.2/pph-update-5.1.2-startup-crash-fix.tar.gz",
-  "sha256": "cbf2a2d65727e836bac240cec5f01b5d9dcda92456fc107997961037a907ad17",
+  "sha256": "27b1414ba9102666ed7fa1d8bd23079b97f178947c0b8a2ae46e01ad7c380b79",
   "min_version": "5.1.0",
   "max_version": "5.1.1",
   "notes": [
