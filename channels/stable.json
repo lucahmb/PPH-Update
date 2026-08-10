@@ -1,16 +1,17 @@
 {
   "product": "pph-funktest",
   "channel": "stable",
-  "version": "5.2.1",
+  "version": "5.2.2",
   "released": "2026-08-10",
-  "build_name": "PPH 5.2.1 · Startup Crash Fix",
+  "build_name": "PPH 5.2.2 · Deep Page Redesign",
   "repository": "lucahmb/PPH-Update",
-  "package_url": "https://raw.githubusercontent.com/lucahmb/PPH-Update/main/packages/v5.2.1/pph-update-5.2.1-startup-crash-fix.tar.gz",
-  "sha256": "199e2dc3a6ce110f20b17f59c459c48497945eb8093f0ac54d9baedab60cc0f8",
+  "package_url": "https://raw.githubusercontent.com/lucahmb/PPH-Update/main/packages/v5.2.2/pph-update-5.2.2-deep-page-redesign.tar.gz",
+  "sha256": "e1d4c6c33fdfc839a40592e5a0bf15012d9e35fac94db6aaf1416ba13c7aa9b2",
   "min_version": "5.2.0",
-  "max_version": "5.2.0",
+  "max_version": "5.2.1",
   "notes": [
-    "Fixes a regression of the 5.1.2 startup crash: two_cards() mixed pack and grid again and crashed on every launch",
-    "PPH never rendered a page on 5.2.0 - this restores it"
+    "Redesigns the boring pages behind Home: System, Hardware, Storage, Services, Events, Jobs, Reports, Tools, Network Doctor, LAN Mapper and Field detail pages",
+    "Adds animated scanlines, status heroes and mini status tiles to detail pages",
+    "Keeps the 5.2.1 startup crash fix"
   ]
 }
