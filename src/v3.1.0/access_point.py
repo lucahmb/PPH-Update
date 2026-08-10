@@ -4,6 +4,7 @@ from __future__ import annotations
 import json
 import os
 import secrets
+import string
 import subprocess
 import threading
 import time
@@ -16,7 +17,11 @@ CONNECTION = "PPH-AccessPoint"
 CONFIG_DIR = Path.home() / ".config" / "pph-ap"
 CONFIG_FILE = CONFIG_DIR / "config.json"
 TOKEN_FILE = CONFIG_DIR / "token"
-DEFAULT = {"ssid": "PPH-WIFI", "password": "ChangeMe123!", "band": "a", "api_port": 8788}
+DEFAULT = {"ssid": "PPH-WIFI", "band": "a", "api_port": 8788}
+
+
+def _digits(length: int = 12) -> str:
+    return "".join(secrets.choice(string.digits) for _ in range(length))
 
 
 def _run(args: list[str], check: bool = False) -> subprocess.CompletedProcess[str]:
@@ -109,6 +114,9 @@ class AccessPointController:
             pass
         merged = dict(DEFAULT)
         merged.update(data)
+        # First install gets a simple random 12-digit WLAN password.
+        if not str(merged.get("password") or "").strip() or merged.get("password") == "ChangeMe123!":
+            merged["password"] = _digits(12)
         self._save_config(merged)
         return merged
 
@@ -122,11 +130,12 @@ class AccessPointController:
     def _load_token(self) -> str:
         try:
             token = TOKEN_FILE.read_text(encoding="utf-8").strip()
-            if token:
+            if token and token.isdigit() and len(token) == 12:
                 return token
         except OSError:
             pass
-        token = secrets.token_urlsafe(24)
+        # Keep laptop pairing easy to type on the Pi: 12 numeric digits.
+        token = _digits(12)
         TOKEN_FILE.write_text(token, encoding="utf-8")
         os.chmod(TOKEN_FILE, 0o600)
         return token
@@ -148,17 +157,7 @@ class AccessPointController:
             raise RuntimeError("WLAN-Passwort muss mindestens 8 Zeichen haben.")
         _run(["nmcli", "connection", "delete", CONNECTION])
         _run(["nmcli", "connection", "add", "type", "wifi", "ifname", iface, "con-name", CONNECTION, "ssid", ssid], check=True)
-        _run([
-            "nmcli", "connection", "modify", CONNECTION,
-            "802-11-wireless.mode", "ap",
-            "802-11-wireless.band", str(config.get("band") or "a"),
-            "wifi-sec.key-mgmt", "wpa-psk",
-            "wifi-sec.psk", password,
-            "ipv4.method", "shared",
-            "ipv4.addresses", "10.42.0.1/24",
-            "ipv6.method", "disabled",
-            "connection.autoconnect", "yes",
-        ], check=True)
+        _run(["nmcli", "connection", "modify", CONNECTION, "802-11-wireless.mode", "ap", "802-11-wireless.band", str(config.get("band") or "a"), "wifi-sec.key-mgmt", "wpa-psk", "wifi-sec.psk", password, "ipv4.method", "shared", "ipv4.addresses", "10.42.0.1/24", "ipv6.method", "disabled", "connection.autoconnect", "yes"], check=True)
         _run(["nmcli", "connection", "up", CONNECTION], check=True)
 
     def stop(self) -> None:
@@ -190,103 +189,51 @@ class AccessPointController:
 
     def _monitor_loop(self) -> None:
         while True:
-            iface = find_brostrend()
-            lan = _lan_interface()
-            now = time.monotonic()
-            rx = _counter(iface, "rx_bytes")
-            tx = _counter(iface, "tx_bytes")
-            rx_mbps = tx_mbps = 0.0
+            iface = find_brostrend(); lan = _lan_interface(); now = time.monotonic()
+            rx = _counter(iface, "rx_bytes"); tx = _counter(iface, "tx_bytes"); rx_mbps = tx_mbps = 0.0
             if self._previous and self._previous[0] == iface:
                 dt = max(now - self._previous[1], 0.2)
                 rx_mbps = max(0.0, (rx - self._previous[2]) * 8 / dt / 1_000_000)
                 tx_mbps = max(0.0, (tx - self._previous[3]) * 8 / dt / 1_000_000)
-            self._previous = (iface, now, rx, tx)
-            active = self.active()
-            status = {
-                "active": active,
-                "wifi_iface": iface,
-                "driver": DRIVER,
-                "lan_iface": lan,
-                "lan_connected": _carrier(lan),
-                "clients": _clients(iface) if active else 0,
-                "rx_mbps": round(rx_mbps, 2),
-                "tx_mbps": round(tx_mbps, 2),
-                "total_mbps": round(rx_mbps + tx_mbps, 2),
-                "ssid": str(self.config.get("ssid") or "PPH-WIFI"),
-                "band": "5 GHz" if self.config.get("band") == "a" else "2.4 GHz",
-            }
-            with self.lock:
-                self._status = status
+            self._previous = (iface, now, rx, tx); active = self.active()
+            status = {"active": active, "wifi_iface": iface, "driver": DRIVER, "lan_iface": lan, "lan_connected": _carrier(lan), "clients": _clients(iface) if active else 0, "rx_mbps": round(rx_mbps, 2), "tx_mbps": round(tx_mbps, 2), "total_mbps": round(rx_mbps + tx_mbps, 2), "ssid": str(self.config.get("ssid") or "PPH-WIFI"), "band": "5 GHz" if self.config.get("band") == "a" else "2.4 GHz"}
+            with self.lock: self._status = status
             time.sleep(1.0)
 
     def _start_api(self) -> None:
         controller = self
-
         class Handler(BaseHTTPRequestHandler):
-            def log_message(self, *_args: Any) -> None:
-                return
-
+            def log_message(self, *_args: Any) -> None: return
             def send_json(self, code: int, payload: dict[str, Any]) -> None:
-                body = json.dumps(payload).encode("utf-8")
-                self.send_response(code)
-                self.send_header("Content-Type", "application/json")
-                self.send_header("Content-Length", str(len(body)))
-                self.end_headers()
-                self.wfile.write(body)
-
-            def authorized(self) -> bool:
-                return self.headers.get("X-PPH-Token", "") == controller.token
-
+                body=json.dumps(payload).encode("utf-8"); self.send_response(code); self.send_header("Content-Type","application/json"); self.send_header("Content-Length",str(len(body))); self.end_headers(); self.wfile.write(body)
+            def authorized(self) -> bool: return self.headers.get("X-PPH-Token", "") == controller.token
             def body(self) -> dict[str, Any]:
                 try:
-                    length = int(self.headers.get("Content-Length", "0"))
-                    return json.loads(self.rfile.read(length) or b"{}")
-                except Exception:
-                    return {}
-
+                    length=int(self.headers.get("Content-Length","0")); return json.loads(self.rfile.read(length) or b"{}")
+                except Exception: return {}
             def do_GET(self) -> None:
-                if self.path == "/health":
-                    return self.send_json(200, {"ok": True})
-                if not self.authorized():
-                    return self.send_json(401, {"error": "unauthorized"})
-                if self.path == "/status":
-                    return self.send_json(200, controller.status())
-                if self.path == "/config":
-                    return self.send_json(200, {"ssid": controller.config.get("ssid"), "band": controller.config.get("band"), "password_set": bool(controller.config.get("password"))})
-                self.send_json(404, {"error": "not found"})
-
+                if self.path == "/health": return self.send_json(200,{"ok":True})
+                if not self.authorized(): return self.send_json(401,{"error":"unauthorized"})
+                if self.path == "/status": return self.send_json(200,controller.status())
+                if self.path == "/config": return self.send_json(200,{"ssid":controller.config.get("ssid"),"band":controller.config.get("band"),"password_set":bool(controller.config.get("password"))})
+                self.send_json(404,{"error":"not found"})
             def do_POST(self) -> None:
-                if not self.authorized():
-                    return self.send_json(401, {"error": "unauthorized"})
+                if not self.authorized(): return self.send_json(401,{"error":"unauthorized"})
                 try:
-                    if self.path == "/start":
-                        controller.start()
-                        return self.send_json(200, {"ok": True})
-                    if self.path == "/stop":
-                        controller.stop()
-                        return self.send_json(200, {"ok": True})
+                    if self.path == "/start": controller.start(); return self.send_json(200,{"ok":True})
+                    if self.path == "/stop": controller.stop(); return self.send_json(200,{"ok":True})
                     if self.path == "/config":
-                        data = self.body()
-                        controller.update_config(ssid=data.get("ssid"), password=data.get("password"), band=data.get("band"))
-                        return self.send_json(200, {"ok": True})
-                except Exception as exc:
-                    return self.send_json(500, {"error": str(exc)})
-                self.send_json(404, {"error": "not found"})
-
+                        data=self.body(); controller.update_config(ssid=data.get("ssid"),password=data.get("password"),band=data.get("band")); return self.send_json(200,{"ok":True})
+                except Exception as exc: return self.send_json(500,{"error":str(exc)})
+                self.send_json(404,{"error":"not found"})
         try:
-            self._server = ThreadingHTTPServer(("0.0.0.0", int(self.config.get("api_port") or 8788)), Handler)
-            threading.Thread(target=self._server.serve_forever, daemon=True, name="pph-ap-api").start()
-        except OSError:
-            self._server = None
+            self._server=ThreadingHTTPServer(("0.0.0.0",int(self.config.get("api_port") or 8788)),Handler); threading.Thread(target=self._server.serve_forever,daemon=True,name="pph-ap-api").start()
+        except OSError: self._server=None
 
 
 def bars_for_speed(value: float) -> int:
-    if value < 0.1:
-        return 0
-    if value < 5:
-        return 1
-    if value < 25:
-        return 2
-    if value < 75:
-        return 3
+    if value < 0.1: return 0
+    if value < 5: return 1
+    if value < 25: return 2
+    if value < 75: return 3
     return 4
