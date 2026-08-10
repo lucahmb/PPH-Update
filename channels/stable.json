@@ -1,19 +1,19 @@
 {
   "product": "pph-funktest",
   "channel": "stable",
-  "version": "4.1.1",
+  "version": "4.1.2",
   "released": "2026-08-10",
-  "build_name": "PPH 4.1.1 · 5-inch Touch Layout",
+  "build_name": "PPH 4.1.2 · Paged 5-inch Touch UI",
   "repository": "lucahmb/PPH-Update",
-  "package_url": "https://raw.githubusercontent.com/lucahmb/PPH-Update/main/packages/v4.1.1/pph-update-4.1.1-5inch-touch.tar.gz",
-  "sha256": "6d2f92ec065682c6a09eaf8c3fabe1f64b0cec18cfe2fdee7255ea652ec29e3c",
-  "min_version": "4.1.0",
-  "max_version": "4.1.0",
+  "package_url": "https://raw.githubusercontent.com/lucahmb/PPH-Update/main/packages/v4.1.2/pph-update-4.1.2-paged-touch.tar.gz",
+  "sha256": "2d8bf3ba47f94bed4acfac32ef7c6bdcb52f2a7a43a9d43243156fadaa983a33",
+  "min_version": "4.1.1",
+  "max_version": "4.1.1",
   "notes": [
-    "5-inch/800x480 touch layout",
-    "larger controls",
-    "bottom navigation",
-    "less dense pages",
+    "Paged 5-inch UI",
+    "1-2 metrics per page",
+    "larger touch targets",
+    "wireless/network detail pages",
     "backend unchanged"
   ]
 }
