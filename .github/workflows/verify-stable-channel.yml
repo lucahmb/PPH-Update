@@ -37,4 +37,8 @@ jobs:
           print('sha256 OK')
           PY
       - name: Render every CORE page of the current top-level UI layer
-        run: xvfb-run -a python3 tools/ui_smoke_test.py /tmp/stable_payload/payload pph_hub/pph51_ui.py
+        run: |
+          set -euo pipefail
+          MODULE=$(python3 -c "import json;print(json.load(open('/tmp/stable_payload/manifest.json')).get('ui_module','pph_hub/pph51_ui.py'))" 2>/dev/null || echo "pph_hub/pph51_ui.py")
+          echo "UI module: $MODULE"
+          xvfb-run -a python3 tools/ui_smoke_test.py /tmp/stable_payload/payload "$MODULE"

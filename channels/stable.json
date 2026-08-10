@@ -1,17 +1,18 @@
 {
   "product": "pph-funktest",
   "channel": "stable",
-  "version": "5.2.2",
+  "version": "6.0.0",
   "released": "2026-08-10",
-  "build_name": "PPH 5.2.2 · Deep Page Redesign",
+  "build_name": "PPH 6.0.0 · Field Instrument Redesign",
   "repository": "lucahmb/PPH-Update",
-  "package_url": "https://raw.githubusercontent.com/lucahmb/PPH-Update/main/packages/v5.2.2/pph-update-5.2.2-deep-page-redesign.tar.gz",
-  "sha256": "c144b0951fe8254f8e6e67b3c19a30c76cae6e5598e4c9c1a9b47f1c30ab5391",
-  "min_version": "5.2.0",
-  "max_version": "5.2.1",
+  "package_url": "https://raw.githubusercontent.com/lucahmb/PPH-Update/main/packages/v6.0.0/pph-update-6.0.0-field-instrument-redesign.tar.gz",
+  "sha256": "4836235663c19211a88927d28b0b422abbadc4ae932fef25db2f3e82c2d010ba",
+  "min_version": "5.1.0",
+  "max_version": "5.2.2",
   "notes": [
-    "Redesigns the boring pages behind Home: System, Hardware, Storage, Services, Events, Jobs, Reports, Tools, Network Doctor, LAN Mapper and Field detail pages",
-    "Adds animated scanlines, status heroes and mini status tiles to detail pages",
-    "Keeps the 5.2.1 startup crash fix"
+    "Complete field-instrument UI/UX redesign for the 800x480 touch display",
+    "One authoritative UI layer - no more theme-on-theme stacking",
+    "Also fixes the 5.2.2 scanline() crash by replacing the whole UI layer",
+    "Covers every device currently on 5.1.x or 5.2.x"
   ]
 }

@@ -126,10 +126,10 @@ class FakeApp:
         return self._fake_cache[name]
 
 
-def _load_install(module_path: Path):
-    hub_dir = str(module_path.parent)
-    if hub_dir not in sys.path:
-        sys.path.insert(0, hub_dir)
+def _load_install(module_path: Path, payload_dir: Path):
+    for extra in (str(module_path.parent), str(payload_dir)):
+        if extra not in sys.path:
+            sys.path.insert(0, extra)
     spec = importlib.util.spec_from_file_location("_pph_ui_under_test", module_path)
     if spec is None or spec.loader is None:
         raise SystemExit(f"could not load module spec for {module_path}")
@@ -144,13 +144,18 @@ def run(payload_dir: Path, module_rel_path: str) -> None:
     module_path = payload_dir / module_rel_path
     if not module_path.is_file():
         raise SystemExit(f"UI module not found: {module_path}")
-    module = _load_install(module_path)
+    module = _load_install(module_path, payload_dir)
 
     module.install(FakeApp, {})
 
     root = tk.Tk()
     try:
         app = FakeApp(root)
+        build_shell = getattr(type(app), "_build_shell", None)
+        if build_shell is not None:
+            try: app.content.destroy()
+            except Exception: pass
+            build_shell(app)
         app._build_pages()
         core = getattr(module, "CORE", tuple(app.frames.keys()))
         if not core:
