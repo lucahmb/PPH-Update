@@ -1,0 +1,76 @@
+{
+  "format": 1,
+  "product": "pph-funktest",
+  "version": "3.1.0",
+  "min_version": "3.0.0",
+  "max_version": "3.0.99",
+  "channel": "stable",
+  "build_name": "PPH 3.1.0 · Access Point",
+  "released": "2026-08-10",
+  "tests": [
+    "test_v2.py",
+    "test_measurement_targets.py",
+    "test_core_platform_28.py",
+    "test_github_updates_29.py",
+    "test_ui_300.py",
+    "test_access_point_310.py"
+  ],
+  "features": [
+    "Neuer ACCESS-Point-Tab im PPH 3 Control Center",
+    "LAN-Uplink über BrosTrend mt7921u als eigenes WLAN",
+    "Eigene SSID und WPA2-Passwort direkt am Touchdisplay",
+    "2.4-GHz- und 5-GHz-Modus",
+    "Live-Gesamtgeschwindigkeit, RX, TX und verbundene Geräte",
+    "Vier dynamische Geschwindigkeitsbalken",
+    "Token-geschützte lokale Laptop-API auf TCP 8788",
+    "Adapter-Erkennung über mt7921u statt feste wlanX-Namen",
+    "Offline-Betrieb nach Installation"
+  ],
+  "files": [
+    {
+      "path": "pph_hub/access_point.py",
+      "sha256": "6c563ac1cb019615ee496a05a8703e4f6bf50909e9fddd2653f825d8a568b8e9",
+      "mode": "0644"
+    },
+    {
+      "path": "pph_hub/access_ui.py",
+      "sha256": "7f3d8cc271566646ccb73b340d5a5fcf5370d7ebe9a6e6fae36e2446d09b1f93",
+      "mode": "0644"
+    },
+    {
+      "path": "pph_hub/pph3_app.py",
+      "sha256": "870c8a3a73c6891fa9830343b8e210a7aa394e59ecbf87b4e8794385d2770694",
+      "mode": "0755"
+    },
+    {
+      "path": "pph_hub/pph3_ui.py",
+      "sha256": "df6308b474d503a5268f2295192a62bf02b658d5f3c64bdcfec1795c0ac7c006",
+      "mode": "0644"
+    },
+    {
+      "path": "pph_version.py",
+      "sha256": "a328c4d252e9c807b09dd562ac3d6695e647f6215628a481c2327988e649dee5",
+      "mode": "0644"
+    },
+    {
+      "path": "start_pph_hub.sh",
+      "sha256": "c61acc0509b731049d7d7cebdcad00cbb602e021315f7452d439c3d824230bd7",
+      "mode": "0755"
+    },
+    {
+      "path": "test_access_point_310.py",
+      "sha256": "1212d3ea80748fa489cdbf696c2be130d8800971958c123accc7332a7a7265df",
+      "mode": "0644"
+    },
+    {
+      "path": "test_github_updates_29.py",
+      "sha256": "5e55f667b61fbe74ed3556f0d12ac469efa917ce964ba3e3e08731fc2416c447",
+      "mode": "0644"
+    },
+    {
+      "path": "test_ui_300.py",
+      "sha256": "5ffca327b6987bb26c296e015544c63b0061da6de83efbfe5698a4cd312deced",
+      "mode": "0644"
+    }
+  ]
+}

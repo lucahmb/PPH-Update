@@ -1,21 +1,20 @@
 {
   "product": "pph-funktest",
   "channel": "stable",
-  "version": "3.0.0",
-  "released": "2026-08-09",
-  "build_name": "PPH 3.0.0 · Control Center UX",
+  "version": "3.1.0",
+  "released": "2026-08-10",
+  "build_name": "PPH 3.1.0 · Access Point",
   "repository": "lucahmb/PPH-Update",
-  "package_url": "https://raw.githubusercontent.com/lucahmb/PPH-Update/main/packages/v3.0.0/pph-update-3.0.0-control-center.tar.gz",
-  "sha256": "ac4d3ddbb7aec3ef392b1f3023f4a88580413ca5ff8a25f89e1c0a85b019bf00",
-  "min_version": "2.9.4",
-  "max_version": "2.9.99",
+  "package_url": "https://raw.githubusercontent.com/lucahmb/PPH-Update/main/packages/v3.1.0/pph-update-3.1.0-access-point.tar.gz",
+  "sha256": "0089d3c5e27f0cb7edc865d333307d529007460313e0a18e62d5ba1564db60f3",
+  "min_version": "3.0.0",
+  "max_version": "3.0.99",
   "notes": [
-    "Komplett neue PPH-3.0-Control-Center-Oberfläche",
-    "Feste Navigation: HOME · MEASURE · WIFI · SYSTEM · JOBS · EVENTS · SETTINGS",
-    "Neues Home-Dashboard mit Health, Messstatus, WLAN, Jobs, Events und Updates",
-    "Jobs und Events sind jetzt eigene Touch-Seiten",
-    "WiFi-Übersicht identifiziert Adapter über Hardware-Rolle und Treiber statt feste wlan-Namen",
-    "Bewährtes 2.9.4-Backend bleibt als stabile Basis erhalten",
-    "CHECK UPDATES und robuster PPH-Restart bleiben erhalten"
+    "ACCESS POINT direkt im PPH 3 Control Center",
+    "LAN -> BrosTrend mt7921u -> eigenes WLAN mit eigener SSID und Passwort",
+    "Live Mbit/s, RX/TX, Client-Anzahl und dynamische WLAN-Balken",
+    "2.4/5 GHz Auswahl und Start/Stop am Touchdisplay",
+    "Laptop-Steuerung lokal über Port 8788 und Token",
+    "Keine feste wlanX-Bindung"
   ]
 }
