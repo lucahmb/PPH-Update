@@ -1,0 +1,22 @@
+name: Release PPH 4.2.0
+on:
+  push:
+    paths:
+      - 'src/v4.2.0/**'
+      - '.github/workflows/release-v4.2.0.yml'
+permissions:
+  contents: write
+jobs:
+  release:
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v4
+      - name: Build and validate
+        run: python3 src/v4.2.0/build_release.py
+      - name: Publish stable package
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add packages/v4.2.0 channels/stable.json
+          git commit -m "Publish PPH 4.2.0" || exit 0
+          git push
