@@ -1,18 +1,20 @@
 {
   "product": "pph-funktest",
   "channel": "stable",
-  "version": "3.1.3",
+  "version": "3.1.4",
   "released": "2026-08-10",
-  "build_name": "PPH 3.1.3 · Current IP Control",
+  "build_name": "PPH 3.1.4 · Field Mode",
   "repository": "lucahmb/PPH-Update",
-  "package_url": "https://raw.githubusercontent.com/lucahmb/PPH-Update/main/packages/v3.1.3/pph-update-3.1.3-current-ip-control.tar.gz",
-  "sha256": "06b67bd52b4c8c2fa7d37fee91803a2385e73aa20ee4002b0c73a7b5a0fa3a7b",
-  "min_version": "3.1.2",
-  "max_version": "3.1.2",
+  "package_url": "https://raw.githubusercontent.com/lucahmb/PPH-Update/main/packages/v3.1.4/pph-update-3.1.4-field-mode.tar.gz",
+  "sha256": "2d97b0de22992db93c965fed1b3c85af22bb89e25a6eb8f584c41d1cc9448703",
+  "min_version": "3.1.3",
+  "max_version": "3.1.3",
   "notes": [
-    "aktuelle LAN-IP im CONTROL-Fenster",
-    "AP-IP 10.42.0.1 separat",
+    "LAN einstecken -> AP auto",
+    "mt7921u BrosTrend erzwungen",
+    "Docker-Forwarding automatisch",
+    "10.42.0.1 Control-IP",
     "4-stelliger Code",
-    "asynchroner AP-Start"
+    "einmalige Field-Mode-Installation zuhause erforderlich"
   ]
 }
