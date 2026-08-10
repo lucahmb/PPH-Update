@@ -1,20 +1,17 @@
 {
   "product": "pph-funktest",
   "channel": "stable",
-  "version": "3.1.0",
+  "version": "3.1.1",
   "released": "2026-08-10",
-  "build_name": "PPH 3.1.0 · Access Point",
+  "build_name": "PPH 3.1.1 · Access Point Fix",
   "repository": "lucahmb/PPH-Update",
-  "package_url": "https://raw.githubusercontent.com/lucahmb/PPH-Update/main/packages/v3.1.0/pph-update-3.1.0-access-point.tar.gz",
-  "sha256": "eb3189f10b38b1cc8435452af9d12157693db2557ce830d57a6a92a4f9e29bb9",
-  "min_version": "3.0.0",
-  "max_version": "3.0.99",
+  "package_url": "https://raw.githubusercontent.com/lucahmb/PPH-Update/main/packages/v3.1.1/pph-update-3.1.1-access-point-fix.tar.gz",
+  "sha256": "3a6670abd98c9f8948cfe6d27e14ddcc298a7d5e72a9d393df750c981c1ef035",
+  "min_version": "3.1.0",
+  "max_version": "3.1.0",
   "notes": [
-    "ACCESS POINT direkt im PPH 3 Control Center",
-    "LAN -> BrosTrend mt7921u -> eigenes WLAN mit eigener SSID und Passwort",
-    "Live Mbit/s, RX/TX, Client-Anzahl und dynamische WLAN-Balken",
-    "2.4/5 GHz Auswahl und Start/Stop am Touchdisplay",
-    "Laptop-Steuerung lokal über Port 8788 und Token",
-    "Keine feste wlanX-Bindung"
+    "12-stelliges numerisches WLAN-Passwort",
+    "12-stelliger numerischer Laptop-Token",
+    "ACCESS UI zeigt und validiert das Passwort"
   ]
 }
