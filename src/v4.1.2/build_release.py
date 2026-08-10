@@ -76,7 +76,7 @@ def install(cls:type, ns:dict[str,Any])->None:
         p=self._new_page('network412b','NETWORK DETAILS'); head(self,p,'NETWORK DETAILS','PAGE 2 / 2'); nav(self,p,'network412')
         self.p412nb={k:tk.StringVar(value='—') for k in ('ping','jitter','loss')}
         g=tk.Frame(p,bg=BG); g.pack(fill='both',expand=True,padx=10,pady=5)
-        for c in range(3): g.grid_columnconfigure(c,weight=1,uniform='nb');
+        for c in range(3): g.grid_columnconfigure(c,weight=1,uniform='nb')
         giant(self,g,'PING',self.p412nb['ping'],YELLOW).grid(row=0,column=0,sticky='nsew',padx=4)
         giant(self,g,'JITTER',self.p412nb['jitter'],ORANGE).grid(row=0,column=1,sticky='nsew',padx=4)
         giant(self,g,'LOSS',self.p412nb['loss'],GREEN).grid(row=0,column=2,sticky='nsew',padx=4)
@@ -130,7 +130,7 @@ launcher=PAYLOAD/'pph_hub/pph3_app.py'; t=launcher.read_text(encoding='utf-8')
 if 'from pph412_paged import install as install412' not in t: t=t.replace('if __name__ == "__main__":','from pph412_paged import install as install412\ninstall412(hub.PolishedPPHApp, vars(hub))\n\nif __name__ == "__main__":',1)
 launcher.write_text(t,encoding='utf-8')
 (PAYLOAD/'pph_version.py').write_text('from __future__ import annotations\n\nVERSION = "4.1.2"\nCHANNEL = "stable"\nBUILD_NAME = "PPH 4.1.2 · Paged 5-inch Touch UI"\nSCHEMA_VERSION = 4\n',encoding='utf-8')
-test=PAYLOAD/'test_ui_412.py'; test.write_text("from pathlib import Path\nR=Path(__file__).resolve().parent\nt=(R/'pph_hub/pph412_paged.py').read_text()\nfor x in ('PAGE 1 / 2','PAGE 2 / 2','font(self._font(30','pady=14','wireless412b','network412b'): assert x in t\nprint('PPH 4.1.2 tests OK')\n")
+test=PAYLOAD/'test_ui_412.py'; test.write_text("from pathlib import Path\nR=Path(__file__).resolve().parent\nt=(R/'pph_hub/pph412_paged.py').read_text()\nfor x in ('PAGE 1 / 2','PAGE 2 / 2','font=self._font(30','pady=14','wireless412b','network412b'): assert x in t\nprint('PPH 4.1.2 tests OK')\n")
 subprocess.run(['python3','-m','py_compile',str(PAYLOAD/'pph_hub/pph412_paged.py'),str(launcher)],check=True); subprocess.run(['python3',str(test)],cwd=PAYLOAD,check=True)
 for c in PAYLOAD.rglob('__pycache__'): shutil.rmtree(c)
 files=[]
