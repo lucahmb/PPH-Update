@@ -1,20 +1,19 @@
 {
   "product": "pph-funktest",
   "channel": "stable",
-  "version": "3.2.0",
+  "version": "4.0.0",
   "released": "2026-08-10",
-  "build_name": "PPH 3.2.0 · Field Analyzer",
+  "build_name": "PPH 4.0.0 · Visual Overhaul",
   "repository": "lucahmb/PPH-Update",
-  "package_url": "https://raw.githubusercontent.com/lucahmb/PPH-Update/main/packages/v3.2.0/pph-update-3.2.0-field-analyzer.tar.gz",
-  "sha256": "16e037b6eebdce2f58999de2aab8912f94461c7f2fb54cf59aa16030f67abfd2",
-  "min_version": "3.1.7",
-  "max_version": "3.1.7",
+  "package_url": "https://raw.githubusercontent.com/lucahmb/PPH-Update/main/packages/v4.0.0/pph-update-4.0.0-visual-overhaul.tar.gz",
+  "sha256": "bfc5824ddabeb23a30b42532fd12c0db8834be51803687d3bdbfe59787f2d82b",
+  "min_version": "3.2.0",
+  "max_version": "3.2.0",
   "notes": [
-    "Field Center Redesign",
-    "Network Analyzer Redesign",
-    "Radio Center",
-    "Quick Test",
-    "Network Doctor",
-    "Self-Healing"
+    "Full system visual overhaul",
+    "Animations on all pages",
+    "Wireless Site Analyzer 4.0 shell",
+    "Global legacy-page skin",
+    "Backend unchanged"
   ]
 }
