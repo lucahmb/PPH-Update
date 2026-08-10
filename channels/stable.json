@@ -6,7 +6,7 @@
   "build_name": "PPH 6.0.0 · Field Instrument Redesign",
   "repository": "lucahmb/PPH-Update",
   "package_url": "https://raw.githubusercontent.com/lucahmb/PPH-Update/main/packages/v6.0.0/pph-update-6.0.0-field-instrument-redesign.tar.gz",
-  "sha256": "4836235663c19211a88927d28b0b422abbadc4ae932fef25db2f3e82c2d010ba",
+  "sha256": "46632011594292ac100e217f3475c7cb1fb50f4226f8012be16f2907c57926f6",
   "min_version": "5.1.0",
   "max_version": "5.2.2",
   "notes": [
