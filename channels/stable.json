@@ -1,18 +1,17 @@
 {
   "product": "pph-funktest",
   "channel": "stable",
-  "version": "5.0.0",
+  "version": "5.0.1",
   "released": "2026-08-10",
-  "build_name": "PPH 5.0.0 · Field Platform",
+  "build_name": "PPH 5.0.1 · Fieldctl Packaging Hotfix",
   "repository": "lucahmb/PPH-Update",
-  "package_url": "https://raw.githubusercontent.com/lucahmb/PPH-Update/main/packages/v5.0.0/pph-update-5.0.0-field-platform.tar.gz",
-  "sha256": "e8bfa9c98d97da6532be6aee94dcdafb35083a624a10f6cf628740eaffa49a99",
+  "package_url": "https://raw.githubusercontent.com/lucahmb/PPH-Update/main/packages/v5.0.1/pph-update-5.0.1-fieldctl-hotfix.tar.gz",
+  "sha256": "e083f7f0aa55ab147e2a9562803a446c7d9be14102ecda44c9c8de7353c9a907",
   "min_version": "4.2.0",
-  "max_version": "4.2.0",
+  "max_version": "5.0.0",
   "notes": [
-    "Legacy bottom cards removed",
-    "Field Mode + Connection Flow",
-    "Before/After measurement",
-    "Session Recorder + Notifications"
+    "Fix fieldctl packaging",
+    "Compatibility alias fielddctl.py",
+    "Full PPH 5.0 Field Platform retained"
   ]
 }
