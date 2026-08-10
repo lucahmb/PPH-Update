@@ -1,0 +1,33 @@
+name: Export PPH v3 reference
+
+on:
+  push:
+    paths:
+      - '.github/workflows/export-v3-reference.yml'
+
+permissions:
+  contents: write
+
+jobs:
+  export:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Export v3 text payload
+        run: |
+          set -euo pipefail
+          rm -rf /tmp/pph-v3 ref-v3
+          mkdir -p /tmp/pph-v3 ref-v3/pph_hub
+          tar -xzf packages/v3.0.0/pph-update-3.0.0-control-center.tar.gz -C /tmp/pph-v3
+          cp /tmp/pph-v3/payload/pph_hub/pph3_app.py ref-v3/pph_hub/
+          cp /tmp/pph-v3/payload/pph_hub/pph3_ui.py ref-v3/pph_hub/
+          cp /tmp/pph-v3/payload/pph_version.py ref-v3/
+          cp /tmp/pph-v3/payload/start_pph_hub.sh ref-v3/
+          cp /tmp/pph-v3/payload/test_ui_300.py ref-v3/
+      - name: Commit reference
+        run: |
+          git config user.name 'PPH Build Bot'
+          git config user.email 'actions@users.noreply.github.com'
+          git add ref-v3
+          git commit -m 'Export v3 reference payload' || exit 0
+          git push
