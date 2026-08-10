@@ -16,12 +16,10 @@ with tarfile.open(BASE,'r:gz') as tf:tf.extractall(WORK)
 
 ap=PAYLOAD/'pph_hub/access_point.py'
 t=ap.read_text(encoding='utf-8')
-# 3.1.2 simple-control changes
 t=rep(t,'if token and token.isdigit() and len(token) == 12:','if token and token.isdigit() and len(token) == 4:','token validation')
 t=rep(t,'token = _digits(12)\n        TOKEN_FILE.write_text(token, encoding="utf-8")','token = _digits(4)\n        TOKEN_FILE.write_text(token, encoding="utf-8")','token generation')
 t=t.replace('12 numeric digits.','4 numeric digits.',1)
 t=rep(t,'if self.path == "/start": controller.start(); return self.send_json(200,{"ok":True})','if self.path == "/start":\n                        threading.Thread(target=controller.start, daemon=True, name="pph-ap-start").start(); return self.send_json(202,{"accepted":True})','api async start')
-# 3.1.3 current-IP support
 insert='''\ndef _ipv4(interface: str | None) -> str:\n    if not interface:\n        return ""\n    result = _run(["ip", "-4", "-o", "addr", "show", "dev", interface])\n    for line in result.stdout.splitlines():\n        parts = line.split()\n        if "inet" in parts:\n            return parts[parts.index("inet") + 1].split("/", 1)[0]\n    return ""\n\n'''
 t=rep(t,'def _carrier(interface: str | None) -> bool:\n',insert+'def _carrier(interface: str | None) -> bool:\n','ipv4 helper')
 t=rep(t,'"lan_iface": lan, "lan_connected": _carrier(lan),','"lan_iface": lan, "lan_ip": _ipv4(lan), "lan_connected": _carrier(lan),','lan ip status')
@@ -33,8 +31,8 @@ t=rep(t,'import tkinter as tk\n','import tkinter as tk\nimport threading\n','thr
 old='''    def start_access(self)->None:\n        try:self.pph31_ap.start(); self.footer_var.set("Access Point gestartet"); self.pph31_refresh_access()\n        except Exception as exc:messagebox.showerror("PPH Access Point",str(exc),parent=self.root)'''
 new='''    def start_access(self)->None:\n        self.footer_var.set("Access Point startet …")\n        self.pph31_ap_vars["detail"].set("STARTET · BrosTrend wird konfiguriert · bitte kurz warten")\n        def worker():\n            try:\n                self.pph31_ap.start(); error=None\n            except Exception as exc:\n                error=exc\n            def done():\n                if error:\n                    self.footer_var.set("Access Point Start fehlgeschlagen")\n                    self.pph31_ap_vars["detail"].set(f"STARTFEHLER · {error}")\n                    messagebox.showerror("PPH Access Point",str(error),parent=self.root)\n                else:\n                    self.footer_var.set("Access Point gestartet")\n                self.pph31_refresh_access()\n            self.root.after(0,done)\n        threading.Thread(target=worker,daemon=True,name="pph-ap-ui-start").start()'''
 t=rep(t,old,new,'ui async start')
-old_dialog='messagebox.showinfo("PPH Laptop Token",f"Host: homelab.local:8788\\n\\nToken:\\n{self.pph31_ap.token}",parent=self.root)'
-new_dialog='''status=self.pph31_ap.status(); lan_ip=status.get("lan_ip") or "noch keine LAN-IP"\n        messagebox.showinfo("PPH Laptop Control",f"AKTUELLE PI-IP: {lan_ip}\\nAP-IP: 10.42.0.1\\nPORT: 8788\\n\\n4-STELLIGER CODE:\\n{self.pph31_ap.token}\\n\\nIm gleichen LAN: aktuelle Pi-IP verwenden.\\nIm PPH-WLAN: 10.42.0.1 verwenden.",parent=self.root)'''
+old_dialog='''    def show_token(self)->None:messagebox.showinfo("PPH Laptop Token",f"Host: homelab.local:8788\\n\\nToken:\\n{self.pph31_ap.token}",parent=self.root)'''
+new_dialog='''    def show_token(self)->None:\n        status=self.pph31_ap.status()\n        lan_ip=status.get("lan_ip") or "noch keine LAN-IP"\n        messagebox.showinfo("PPH Laptop Control",f"AKTUELLE PI-IP: {lan_ip}\\nAP-IP: 10.42.0.1\\nPORT: 8788\\n\\n4-STELLIGER CODE:\\n{self.pph31_ap.token}\\n\\nIm gleichen LAN: aktuelle Pi-IP verwenden.\\nIm PPH-WLAN: 10.42.0.1 verwenden.",parent=self.root)'''
 t=rep(t,old_dialog,new_dialog,'control dialog')
 ui.write_text(t,encoding='utf-8')
 
