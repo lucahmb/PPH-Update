@@ -6,7 +6,7 @@
   "build_name": "PPH 5.1.1 · Access Point + Connection Flow Fix",
   "repository": "lucahmb/PPH-Update",
   "package_url": "https://raw.githubusercontent.com/lucahmb/PPH-Update/main/packages/v5.1.1/pph-update-5.1.1-access-point-flow-fix.tar.gz",
-  "sha256": "b362d797190850c9430cbd6623f27292c1ec9856a6a29ec7c7f60b30182b4e88",
+  "sha256": "cc2ecb5b30d4580bf11ad69f9f56ef50e72c535e7ccaa57f3a3b848370792628",
   "min_version": "5.1.0",
   "max_version": "5.1.0",
   "notes": [
