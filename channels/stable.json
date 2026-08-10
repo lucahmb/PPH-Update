@@ -1,17 +1,17 @@
 {
   "product": "pph-funktest",
   "channel": "stable",
-  "version": "5.0.3",
+  "version": "5.0.4",
   "released": "2026-08-10",
-  "build_name": "PPH 5.0.3 · Bottom Navigation Fix",
+  "build_name": "PPH 5.0.4 · Startup Navigation Fix",
   "repository": "lucahmb/PPH-Update",
-  "package_url": "https://raw.githubusercontent.com/lucahmb/PPH-Update/main/packages/v5.0.3/pph-update-5.0.3-bottom-nav-fix.tar.gz",
-  "sha256": "c8b2831545392d69ed5b03e81a6cbb4aa31bbb1d070a6834da61b2e54b33b244",
-  "min_version": "5.0.2",
-  "max_version": "5.0.2",
+  "package_url": "https://raw.githubusercontent.com/lucahmb/PPH-Update/main/packages/v5.0.4/pph-update-5.0.4-startup-nav-fix.tar.gz",
+  "sha256": "00954641b1a5fb61fe231235929115a1264f8f6e4df5be0cb4a3deccf467c881",
+  "min_version": "5.0.3",
+  "max_version": "5.0.3",
   "notes": [
-    "Fix FIELD INTERFACE banner covering bottom buttons",
-    "Legacy overlay purge",
-    "Bottom navigation kept above overlays"
+    "Fix startup TclError invalid command name",
+    "Clear destroyed legacy nav references",
+    "Keep FIELD INTERFACE bottom-nav fix"
   ]
 }
