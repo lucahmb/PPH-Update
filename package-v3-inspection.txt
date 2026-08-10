@@ -1,0 +1,70 @@
+=== FILE TREE ===
+manifest.json
+payload/pph_hub/pph3_app.py
+payload/pph_hub/pph3_ui.py
+payload/pph_version.py
+payload/start_pph_hub.sh
+payload/test_github_updates_29.py
+payload/test_ui_300.py
+
+=== MANIFEST-LIKE FILES ===
+--- manifest.json ---
+{
+  "format": 1,
+  "product": "pph-funktest",
+  "version": "3.0.0",
+  "min_version": "2.9.4",
+  "max_version": "2.9.99",
+  "channel": "stable",
+  "build_name": "PPH 3.0.0 · Control Center UX",
+  "released": "2026-08-09",
+  "tests": [
+    "test_v2.py",
+    "test_measurement_targets.py",
+    "test_core_platform_28.py",
+    "test_github_updates_29.py",
+    "test_ui_300.py"
+  ],
+  "features": [
+    "Komplett neue PPH-3.0-Control-Center-Oberfläche",
+    "Feste Hauptnavigation: Home, Measure, WiFi, System, Jobs, Events, Settings",
+    "Neues Home-Dashboard mit Health, Messstatus, WLAN, Jobs, Events und Updates",
+    "Jobs und Events als eigene Touch-Seiten",
+    "WiFi-Übersicht nutzt Hardware-Rollen/Treiber statt feste wlan-Namen",
+    "Bestehendes 2.9.4-Backend bleibt als stabile Basis erhalten",
+    "CHECK UPDATES und robuster Restart bleiben erhalten"
+  ],
+  "files": [
+    {
+      "path": "pph_version.py",
+      "sha256": "7b564ac516fbac039d37f7586d873fb5476e1656a34318ca888bed354142dd0b",
+      "mode": "0644"
+    },
+    {
+      "path": "start_pph_hub.sh",
+      "sha256": "c61acc0509b731049d7d7cebdcad00cbb602e021315f7452d439c3d824230bd7",
+      "mode": "0755"
+    },
+    {
+      "path": "pph_hub/pph3_app.py",
+      "sha256": "339c340b725983682df47d52083f50a4ace4b681e44082484fb1bd0411080934",
+      "mode": "0755"
+    },
+    {
+      "path": "pph_hub/pph3_ui.py",
+      "sha256": "41625df59843b68cf33312f2360bbe3decb209fe0a273f56da70bf9d91c84504",
+      "mode": "0644"
+    },
+    {
+      "path": "test_github_updates_29.py",
+      "sha256": "5e55f667b61fbe74ed3556f0d12ac469efa917ce964ba3e3e08731fc2416c447",
+      "mode": "0644"
+    },
+    {
+      "path": "test_ui_300.py",
+      "sha256": "5ffca327b6987bb26c296e015544c63b0061da6de83efbfe5698a4cd312deced",
+      "mode": "0644"
+    }
+  ]
+}
+
