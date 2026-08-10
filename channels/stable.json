@@ -1,19 +1,17 @@
 {
   "product": "pph-funktest",
   "channel": "stable",
-  "version": "3.1.6",
+  "version": "3.1.7",
   "released": "2026-08-10",
-  "build_name": "PPH 3.1.6 · Direct Upgrade Fix",
+  "build_name": "PPH 3.1.7 · Display Layer Fix",
   "repository": "lucahmb/PPH-Update",
-  "package_url": "https://raw.githubusercontent.com/lucahmb/PPH-Update/main/packages/v3.1.6/pph-update-3.1.6-direct-from-313.tar.gz",
-  "sha256": "aa3ac14d09c3ab8118dfe2ac3886cbb725706fa09197a055e216121e179cb472",
+  "package_url": "https://raw.githubusercontent.com/lucahmb/PPH-Update/main/packages/v3.1.7/pph-update-3.1.7-display-layer-fix.tar.gz",
+  "sha256": "919a4479b7251e4d5962d22e8d69fe535092ed73cb2caf94dd3fa9e36a2a58d2",
   "min_version": "3.1.3",
-  "max_version": "3.1.5",
+  "max_version": "3.1.6",
   "notes": [
-    "Direkt von 3.1.3 installierbar",
+    "Fullscreen invisible-buttons Z-order fix",
     "Field Mode enthalten",
-    "Fullscreen/UI Fix enthalten",
-    "Fresh Update Check enthalten",
-    "neuer Paketname gegen stale cache"
+    "Direktes Upgrade ab 3.1.3"
   ]
 }
