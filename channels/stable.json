@@ -6,7 +6,7 @@
   "build_name": "PPH 3.1.1 · Access Point Fix",
   "repository": "lucahmb/PPH-Update",
   "package_url": "https://raw.githubusercontent.com/lucahmb/PPH-Update/main/packages/v3.1.1/pph-update-3.1.1-access-point-fix.tar.gz",
-  "sha256": "219656007715c8271c2b44fa8d03d3d49cea4aeae5342960dda2d32f8b074bc5",
+  "sha256": "01615c4ac9a93695d64930d2d64f54bdbbe48e07239b96517c7290696ec2105f",
   "min_version": "3.1.0",
   "max_version": "3.1.0",
   "notes": [
