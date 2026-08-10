@@ -4,7 +4,7 @@ import json, threading, time, tkinter as tk
 from tkinter import messagebox
 from urllib import request, error
 
-VERSION='6.0.0'
+VERSION='6.0.1'
 DEFAULT_PORT=8765
 BG='#03070C'; PANEL='#0A111A'; PANEL2='#101B28'; BORDER='#21354A'; TEXT='#F4F8FB'; MUTED='#7891A6'
 CYAN='#42DCFF'; GREEN='#45E39A'; RED='#FF6475'; ORANGE='#FF9F68'; PURPLE='#BD8CFF'
@@ -88,8 +88,11 @@ class App:
         if self.busy:return
         self.busy=True
         def run():
-            try:fn()
-            except Exception as e:self.root.after(0,lambda:messagebox.showerror('PPH App Control',str(e)))
+            try:
+                fn()
+            except Exception as e:
+                msg=str(e)
+                self.root.after(0,lambda m=msg:messagebox.showerror('PPH App Control',m))
             finally:self.root.after(0,self._idle)
         threading.Thread(target=run,daemon=True).start()
     def _idle(self):self.busy=False
