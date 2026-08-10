@@ -1,16 +1,16 @@
 {
   "product": "pph-funktest",
   "channel": "stable",
-  "version": "5.1.2",
+  "version": "5.1.3",
   "released": "2026-08-10",
-  "build_name": "PPH 5.1.2 · Startup Crash Fix",
+  "build_name": "PPH 5.1.3 · Launcher False-Positive Fix",
   "repository": "lucahmb/PPH-Update",
-  "package_url": "https://raw.githubusercontent.com/lucahmb/PPH-Update/main/packages/v5.1.2/pph-update-5.1.2-startup-crash-fix.tar.gz",
-  "sha256": "27b1414ba9102666ed7fa1d8bd23079b97f178947c0b8a2ae46e01ad7c380b79",
+  "package_url": "https://raw.githubusercontent.com/lucahmb/PPH-Update/main/packages/v5.1.3/pph-update-5.1.3-launcher-false-positive-fix.tar.gz",
+  "sha256": "740be8a1fc5ebb2c2e2d030445e784b6adeea8c1f61dc4e65c9677ea719bbba3",
   "min_version": "5.1.0",
-  "max_version": "5.1.1",
+  "max_version": "5.1.2",
   "notes": [
-    "Fixes a startup crash (pack/grid geometry manager conflict in two_cards()) that made PPH restart-loop and appear to flicker without ever opening",
-    "Works whether the device is currently on 5.1.0 or 5.1.1"
+    "Fixes a launcher bug where an unrelated process with a relative argv path could be mistaken for an already-running PPH Hub, silently preventing startup",
+    "Applies whether the device is currently on 5.1.0, 5.1.1 or 5.1.2"
   ]
 }
