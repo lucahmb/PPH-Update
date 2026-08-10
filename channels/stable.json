@@ -1,18 +1,18 @@
 {
   "product": "pph-funktest",
   "channel": "stable",
-  "version": "6.0.0",
+  "version": "6.0.1",
   "released": "2026-08-10",
-  "build_name": "PPH 6.0.0 · Field Instrument Redesign",
+  "build_name": "PPH 6.0.1 · Topbar Version Control",
   "repository": "lucahmb/PPH-Update",
-  "package_url": "https://raw.githubusercontent.com/lucahmb/PPH-Update/main/packages/v6.0.0/pph-update-6.0.0-field-instrument-redesign.tar.gz",
-  "sha256": "46632011594292ac100e217f3475c7cb1fb50f4226f8012be16f2907c57926f6",
-  "min_version": "5.1.0",
-  "max_version": "5.2.2",
+  "package_url": "https://raw.githubusercontent.com/lucahmb/PPH-Update/main/packages/v6.0.1/pph-update-6.0.1-topbar-version-control.tar.gz",
+  "sha256": "21f9af85cc2b8eaa8d99ed14a950f823ae20d161be3347a23de72c62320453d9",
+  "min_version": "6.0.0",
+  "max_version": "6.0.0",
   "notes": [
-    "Complete field-instrument UI/UX redesign for the 800x480 touch display",
-    "One authoritative UI layer - no more theme-on-theme stacking",
-    "Also fixes the 5.2.2 scanline() crash by replacing the whole UI layer",
-    "Covers every device currently on 5.1.x or 5.2.x"
+    "Restore version control to the global PPH 6 topbar",
+    "Show installed version on every page",
+    "One-tap access to existing update checker",
+    "Status chip remains visible beside update control"
   ]
 }
