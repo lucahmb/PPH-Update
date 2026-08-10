@@ -1,17 +1,20 @@
 {
   "product": "pph-funktest",
   "channel": "stable",
-  "version": "3.1.7",
+  "version": "3.2.0",
   "released": "2026-08-10",
-  "build_name": "PPH 3.1.7 · Display Layer Fix",
+  "build_name": "PPH 3.2.0 · Field Analyzer",
   "repository": "lucahmb/PPH-Update",
-  "package_url": "https://raw.githubusercontent.com/lucahmb/PPH-Update/main/packages/v3.1.7/pph-update-3.1.7-display-layer-fix.tar.gz",
-  "sha256": "919a4479b7251e4d5962d22e8d69fe535092ed73cb2caf94dd3fa9e36a2a58d2",
-  "min_version": "3.1.3",
-  "max_version": "3.1.6",
+  "package_url": "https://raw.githubusercontent.com/lucahmb/PPH-Update/main/packages/v3.2.0/pph-update-3.2.0-field-analyzer.tar.gz",
+  "sha256": "16e037b6eebdce2f58999de2aab8912f94461c7f2fb54cf59aa16030f67abfd2",
+  "min_version": "3.1.7",
+  "max_version": "3.1.7",
   "notes": [
-    "Fullscreen invisible-buttons Z-order fix",
-    "Field Mode enthalten",
-    "Direktes Upgrade ab 3.1.3"
+    "Field Center Redesign",
+    "Network Analyzer Redesign",
+    "Radio Center",
+    "Quick Test",
+    "Network Doctor",
+    "Self-Healing"
   ]
 }

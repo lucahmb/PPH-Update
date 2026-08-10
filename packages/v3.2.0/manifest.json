@@ -1,0 +1,119 @@
+{
+  "format": 1,
+  "product": "pph-funktest",
+  "version": "3.2.0",
+  "min_version": "3.1.7",
+  "max_version": "3.1.7",
+  "channel": "stable",
+  "build_name": "PPH 3.2.0 · Field Analyzer",
+  "released": "2026-08-10",
+  "tests": [
+    "test_ui_320.py"
+  ],
+  "features": [
+    "Neues PPH Field Center Dashboard für 800x480 Touchdisplay",
+    "Network Analyzer Redesign mit Download/Upload/Ping/Jitter/Loss Live-Kacheln",
+    "Radio Center Redesign für Onboard/BrosTrend/ALFA Rollen",
+    "Quick Test mit Score für Uplink/Gateway/DNS/Internet/WLAN Hardware",
+    "Network Doctor mit Routing/Link/IP/NetworkManager/DNS Diagnose",
+    "Optionales Self-Healing über vorhandenen Field-Mode Root-Helper",
+    "Bestehender Funktest, Access Point, Field Mode und Version Control bleiben erhalten"
+  ],
+  "files": [
+    {
+      "path": "fieldctl.py",
+      "sha256": "a1c8342d63c97ed9022c38e00516ca004ea31aba62a522c3e1c5ce5c6eccb869",
+      "mode": "0755"
+    },
+    {
+      "path": "install_field_mode.sh",
+      "sha256": "be809ccbee23dfb38948fb9d5cf1cb8c1345e18522ea02458f13af4d189bd4bf",
+      "mode": "0755"
+    },
+    {
+      "path": "pph_hub/access_point.py",
+      "sha256": "9f3819d3d95cf0e59fdba2c3cb4bd73963cb4d6cae87fb0c89b93d08da98bd01",
+      "mode": "0644"
+    },
+    {
+      "path": "pph_hub/access_ui.py",
+      "sha256": "2ab7063167defca5f8a880b7ca1bd1429c2036df226a72bb841020ec03c18879",
+      "mode": "0644"
+    },
+    {
+      "path": "pph_hub/pph32_ui.py",
+      "sha256": "3370234df200e92025296206f2a487a07eb1faae87e65f9828fc213a4df43561",
+      "mode": "0644"
+    },
+    {
+      "path": "pph_hub/pph3_app.py",
+      "sha256": "d928df1554c5cfe1fe129ea8d92124afa6265d901cb8c19b67edb27cd68f53b0",
+      "mode": "0755"
+    },
+    {
+      "path": "pph_hub/pph3_ui.py",
+      "sha256": "4961626d33b466a7e5d15629f659ff282740e87d886636e9fcb936ecbfc20ca2",
+      "mode": "0644"
+    },
+    {
+      "path": "pph_version.py",
+      "sha256": "13e00450c09ef0a23426dd0c198862d10d0cd6b4800c1a59c98b5bde1a40130d",
+      "mode": "0644"
+    },
+    {
+      "path": "start_pph_hub.sh",
+      "sha256": "c61acc0509b731049d7d7cebdcad00cbb602e021315f7452d439c3d824230bd7",
+      "mode": "0755"
+    },
+    {
+      "path": "test_access_point_310.py",
+      "sha256": "1212d3ea80748fa489cdbf696c2be130d8800971958c123accc7332a7a7265df",
+      "mode": "0644"
+    },
+    {
+      "path": "test_access_point_311.py",
+      "sha256": "74bf8db2c409d6d4664a1cd5056c450cf2276513ecee92f74d2fc4b662d9e495",
+      "mode": "0644"
+    },
+    {
+      "path": "test_access_point_313.py",
+      "sha256": "251a1b154d05395f33fded65df8fc7ae455d374196b626e231586bcb54cb2b47",
+      "mode": "0644"
+    },
+    {
+      "path": "test_access_point_314.py",
+      "sha256": "fb4d0b335ade906f55d39d72a98e60f9b912196b6ce62c39ee252c86e1617f41",
+      "mode": "0644"
+    },
+    {
+      "path": "test_github_updates_29.py",
+      "sha256": "5e55f667b61fbe74ed3556f0d12ac469efa917ce964ba3e3e08731fc2416c447",
+      "mode": "0644"
+    },
+    {
+      "path": "test_ui_300.py",
+      "sha256": "5ffca327b6987bb26c296e015544c63b0061da6de83efbfe5698a4cd312deced",
+      "mode": "0644"
+    },
+    {
+      "path": "test_ui_315.py",
+      "sha256": "7b1265b6b9f6fb53f2928b0f552c4d06a852da106bea594b6b8d04140ba57a9c",
+      "mode": "0644"
+    },
+    {
+      "path": "test_ui_317.py",
+      "sha256": "7d128c317d26e420d1e9948181dee317c0df109d52799c087ca563f2948f382e",
+      "mode": "0644"
+    },
+    {
+      "path": "test_ui_320.py",
+      "sha256": "1c7c5f72e39558d078d0358de686c534bdd212da4eb2b86572770a08c4b9a2b7",
+      "mode": "0644"
+    },
+    {
+      "path": "test_upgrade_316.py",
+      "sha256": "f57b61c3a506419ce17f23acaaf1b3deea313062573e5491b35e4a2a1cb78751",
+      "mode": "0644"
+    }
+  ]
+}
