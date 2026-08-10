@@ -1,17 +1,18 @@
 {
   "product": "pph-funktest",
   "channel": "stable",
-  "version": "3.1.1",
+  "version": "3.1.2",
   "released": "2026-08-10",
-  "build_name": "PPH 3.1.1 · Access Point Fix",
+  "build_name": "PPH 3.1.2 · Simple Access Control",
   "repository": "lucahmb/PPH-Update",
-  "package_url": "https://raw.githubusercontent.com/lucahmb/PPH-Update/main/packages/v3.1.1/pph-update-3.1.1-access-point-fix.tar.gz",
-  "sha256": "c1b93e7b6d45e17e7453bbb74ade327e059650651eae9a7953da9b499e10f0ff",
-  "min_version": "3.1.0",
-  "max_version": "3.1.0",
+  "package_url": "https://raw.githubusercontent.com/lucahmb/PPH-Update/main/packages/v3.1.2/pph-update-3.1.2-simple-control.tar.gz",
+  "sha256": "83da1059ff64d91ab4124a19d693c6927b54926988dcc822bb2261df1732185a",
+  "min_version": "3.1.1",
+  "max_version": "3.1.1",
   "notes": [
-    "12-stelliges numerisches WLAN-Passwort",
-    "12-stelliger numerischer Laptop-Token",
-    "ACCESS UI zeigt und validiert das Passwort"
+    "Control-IP fest 10.42.0.1",
+    "4-stelliger Code",
+    "kein Auto-Find/.local",
+    "asynchroner AP-Start statt GUI-Timeout"
   ]
 }
