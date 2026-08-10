@@ -1,18 +1,18 @@
 {
   "product": "pph-funktest",
   "channel": "stable",
-  "version": "4.2.0",
+  "version": "5.0.0",
   "released": "2026-08-10",
-  "build_name": "PPH 4.2.0 · Full UI Rewrite",
+  "build_name": "PPH 5.0.0 · Field Platform",
   "repository": "lucahmb/PPH-Update",
-  "package_url": "https://raw.githubusercontent.com/lucahmb/PPH-Update/main/packages/v4.2.0/pph-update-4.2.0-full-ui-rewrite.tar.gz",
-  "sha256": "3e25b655ce4fe9b3aedfe40235b9510bfc72e2277350b447f571ba88934c6eac",
-  "min_version": "4.1.2",
-  "max_version": "4.1.2",
+  "package_url": "https://raw.githubusercontent.com/lucahmb/PPH-Update/main/packages/v5.0.0/pph-update-5.0.0-field-platform.tar.gz",
+  "sha256": "e8bfa9c98d97da6532be6aee94dcdafb35083a624a10f6cf628740eaffa49a99",
+  "min_version": "4.2.0",
+  "max_version": "4.2.0",
   "notes": [
-    "Every page replaced",
-    "No legacy wrapper pages",
-    "5-inch touch layouts systemwide",
-    "Backend unchanged"
+    "Legacy bottom cards removed",
+    "Field Mode + Connection Flow",
+    "Before/After measurement",
+    "Session Recorder + Notifications"
   ]
 }
