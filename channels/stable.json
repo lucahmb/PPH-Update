@@ -1,17 +1,16 @@
 {
   "product": "pph-funktest",
   "channel": "stable",
-  "version": "6.0.2",
-  "released": "2026-08-10",
-  "build_name": "PPH 6.0.2 · Access Point Live Data Fix",
+  "version": "7.0.0",
+  "released": "2026-08-11",
+  "build_name": "PPH 7.0.0 · Motion Redesign",
   "repository": "lucahmb/PPH-Update",
-  "package_url": "https://raw.githubusercontent.com/lucahmb/PPH-Update/main/packages/v6.0.2/pph-update-6.0.2-access-point-live-data-fix.tar.gz",
-  "sha256": "e709848f6ef960230e7abb89bf5dad75ee005375e6617cf5e130d24471c532fe",
+  "package_url": "https://raw.githubusercontent.com/lucahmb/PPH-Update/main/packages/v7.0.0/pph-update-7.0.0-motion-redesign.tar.gz",
+  "sha256": "11724af4848ea72b6f9c91a7ae89eada9fa0d16b7a272720eec13fbecdbd5ce9",
   "min_version": "6.0.0",
-  "max_version": "6.0.1",
+  "max_version": "6.0.2",
   "notes": [
-    "Access Point (and every other LIVE page) now actually updates while visible instead of only once on entry",
-    "Restores RX/TX, LAN, NAT-forwarding/internet status and SSID/password/band editing on the Access Point pages",
-    "Includes 6.0.1 topbar version control"
+    "Complete from-scratch UI/UX and motion redesign: rounded glowing cards, canvas icon system, animated signal bars, live sparklines, sliding nav indicator, radar-sweep boot",
+    "Carries forward all 6.x fixes (live-polling, Access Point detail/config pages, topbar version control)"
   ]
 }
