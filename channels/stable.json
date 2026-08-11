@@ -6,7 +6,7 @@
   "build_name": "PPH 7.0.0 · Motion Redesign",
   "repository": "lucahmb/PPH-Update",
   "package_url": "https://raw.githubusercontent.com/lucahmb/PPH-Update/main/packages/v7.0.0/pph-update-7.0.0-motion-redesign.tar.gz",
-  "sha256": "11724af4848ea72b6f9c91a7ae89eada9fa0d16b7a272720eec13fbecdbd5ce9",
+  "sha256": "baf7926b1b0f71b5447be716cf72f2ee4977a3c08c6954c41a15c869c1aa3832",
   "min_version": "6.0.0",
   "max_version": "6.0.2",
   "notes": [
