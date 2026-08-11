@@ -6,7 +6,7 @@
   "build_name": "PPH 6.0.2 · Access Point Live Data Fix",
   "repository": "lucahmb/PPH-Update",
   "package_url": "https://raw.githubusercontent.com/lucahmb/PPH-Update/main/packages/v6.0.2/pph-update-6.0.2-access-point-live-data-fix.tar.gz",
-  "sha256": "7c77fb7e0dcc8aa9a18cad3abad767a0bb64369d2975609a95d04527497ad972",
+  "sha256": "e709848f6ef960230e7abb89bf5dad75ee005375e6617cf5e130d24471c532fe",
   "min_version": "6.0.0",
   "max_version": "6.0.1",
   "notes": [
