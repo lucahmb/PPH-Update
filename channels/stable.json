@@ -1,18 +1,17 @@
 {
   "product": "pph-funktest",
   "channel": "stable",
-  "version": "6.0.1",
+  "version": "6.0.2",
   "released": "2026-08-10",
-  "build_name": "PPH 6.0.1 · Topbar Version Control",
+  "build_name": "PPH 6.0.2 · Access Point Live Data Fix",
   "repository": "lucahmb/PPH-Update",
-  "package_url": "https://raw.githubusercontent.com/lucahmb/PPH-Update/main/packages/v6.0.1/pph-update-6.0.1-topbar-version-control.tar.gz",
-  "sha256": "21f9af85cc2b8eaa8d99ed14a950f823ae20d161be3347a23de72c62320453d9",
+  "package_url": "https://raw.githubusercontent.com/lucahmb/PPH-Update/main/packages/v6.0.2/pph-update-6.0.2-access-point-live-data-fix.tar.gz",
+  "sha256": "7c77fb7e0dcc8aa9a18cad3abad767a0bb64369d2975609a95d04527497ad972",
   "min_version": "6.0.0",
-  "max_version": "6.0.0",
+  "max_version": "6.0.1",
   "notes": [
-    "Restore version control to the global PPH 6 topbar",
-    "Show installed version on every page",
-    "One-tap access to existing update checker",
-    "Status chip remains visible beside update control"
+    "Access Point (and every other LIVE page) now actually updates while visible instead of only once on entry",
+    "Restores RX/TX, LAN, NAT-forwarding/internet status and SSID/password/band editing on the Access Point pages",
+    "Includes 6.0.1 topbar version control"
   ]
 }
