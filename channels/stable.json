@@ -1,17 +1,16 @@
 {
   "product": "pph-funktest",
   "channel": "stable",
-  "version": "7.1.7",
+  "version": "7.1.8",
   "released": "2026-08-12",
-  "build_name": "PPH 7.1.7 · Boot Intro Connector Fix",
+  "build_name": "PPH 7.1.8 · Access Point Progress Screen",
   "repository": "lucahmb/PPH-Update",
-  "package_url": "https://raw.githubusercontent.com/lucahmb/PPH-Update/main/packages/v7.1.7/pph-update-7.1.7-boot-intro-connector-fix.tar.gz",
-  "sha256": "c273e3a8cffb6a09b4f7d1125b6d5417d6d0058cfad61608afbf99e553f3e23a",
+  "package_url": "https://raw.githubusercontent.com/lucahmb/PPH-Update/main/packages/v7.1.8/pph-update-7.1.8-ap-progress-screen.tar.gz",
+  "sha256": "e52f74a0054b9f76effe3dc8fbf5c3fc78986b1249004deb6d6cee4518de02d4",
   "min_version": "7.1.0",
-  "max_version": "7.1.6",
+  "max_version": "7.1.7",
   "notes": [
-    "Fix: boot intro showed nothing - the pinned DRM connector index was not stable, now auto-detected",
-    "Orientation still pending - run boot_intro/test-rotation.sh with sudo to identify it live",
-    "After check update, re-run: sudo <app-dir>/boot_intro/install.sh"
+    "New: animated Access Point start/stop screen with live real-data checklist and progress bar, stays open until the AP is actually up/down",
+    "No boot-intro changes in this release"
   ]
 }
