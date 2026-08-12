@@ -3,7 +3,6 @@ Description=Luca's Projects Boot Intro
 DefaultDependencies=no
 After=local-fs.target systemd-user-sessions.service plymouth-start.service
 Before=getty@tty1.service display-manager.service
-Conflicts=getty@tty1.service
 
 [Service]
 Type=oneshot

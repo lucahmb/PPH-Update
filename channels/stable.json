@@ -1,17 +1,17 @@
 {
   "product": "pph-funktest",
   "channel": "stable",
-  "version": "7.1.5",
+  "version": "7.1.6",
   "released": "2026-08-12",
-  "build_name": "PPH 7.1.5 · Boot Intro Landscape Mount Fix",
+  "build_name": "PPH 7.1.6 · Boot Intro Autostart Fix",
   "repository": "lucahmb/PPH-Update",
-  "package_url": "https://raw.githubusercontent.com/lucahmb/PPH-Update/main/packages/v7.1.5/pph-update-7.1.5-boot-intro-landscape-mount.tar.gz",
-  "sha256": "2e6e7b0d544196a1d555e3a7441f2c32c71588aa060d53f97cffd5cbf2d26557",
+  "package_url": "https://raw.githubusercontent.com/lucahmb/PPH-Update/main/packages/v7.1.6/pph-update-7.1.6-boot-intro-autostart-fix.tar.gz",
+  "sha256": "1e440e8bf74568182905eb9f475e126c060d7004eefe3509a6ce0f628d6a9744",
   "min_version": "7.1.0",
-  "max_version": "7.1.4",
+  "max_version": "7.1.5",
   "notes": [
-    "Fix: intro is composed landscape again and rotated into the panel buffer at build time (baked into the video file, not a playback flag)",
-    "If orientation is still off (mirrored/upside-down), tell me - one-line fix",
-    "After check update, re-run: sudo <app-dir>/boot_intro/install.sh"
+    "Fix: PPH not auto-launching - removed Conflicts=getty@tty1.service from the boot-intro unit (likely broke a getty-autologin autostart chain)",
+    "After check update, re-run: sudo <app-dir>/boot_intro/install.sh",
+    "Still investigating the intro orientation together - no video content change in this release"
   ]
 }
