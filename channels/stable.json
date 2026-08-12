@@ -1,18 +1,17 @@
 {
   "product": "pph-funktest",
   "channel": "stable",
-  "version": "7.1.2",
+  "version": "7.1.3",
   "released": "2026-08-12",
-  "build_name": "PPH 7.1.2 · Boot Intro Fix",
+  "build_name": "PPH 7.1.3 · Boot Intro Orientation Fix",
   "repository": "lucahmb/PPH-Update",
-  "package_url": "https://raw.githubusercontent.com/lucahmb/PPH-Update/main/packages/v7.1.2/pph-update-7.1.2-boot-intro-fix.tar.gz",
-  "sha256": "02c5e002ec45cf807bb1a12bd7a192f0ae147d07cdd9dc0e343a351ea752043c",
+  "package_url": "https://raw.githubusercontent.com/lucahmb/PPH-Update/main/packages/v7.1.3/pph-update-7.1.3-boot-intro-orientation-fix.tar.gz",
+  "sha256": "fb47854a314cd42a825c5def101322335c4a9de05c0fc7978527a005270b370a",
   "min_version": "7.1.0",
-  "max_version": "7.1.1",
+  "max_version": "7.1.2",
   "notes": [
-    "Fix: boot intro now hands off from Plymouth correctly and plays rotated for the mounted panel",
-    "Intro is livelier now (ambient particles, breathing glow, typewriter log, comet, slow zoom)",
+    "Fix: boot intro now plays horizontal (the panel was never actually rotated - 7.1.2 guessed wrong)",
     "After check update, re-run: sudo <app-dir>/boot_intro/install.sh",
-    "No UI/backend changes otherwise"
+    "No other changes"
   ]
 }

@@ -12,7 +12,7 @@ Type=oneshot
 # way plymouth-quit.service itself does, before mpv tries to become DRM master.
 ExecStartPre=-/usr/bin/plymouth quit
 ExecStart=/usr/bin/mpv --no-config --fs --vo=drm --drm-mode=preferred \
-  --video-rotate=90 \
+  --video-rotate=0 \
   --no-audio --really-quiet --no-terminal --osc=no \
   --input-vo-keyboard=no /opt/luca-boot-intro/intro.mp4
 StandardInput=tty
