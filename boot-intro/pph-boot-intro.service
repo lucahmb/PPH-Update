@@ -1,0 +1,21 @@
+[Unit]
+Description=Luca's Projects Boot Intro
+DefaultDependencies=no
+After=local-fs.target systemd-user-sessions.service
+Before=getty@tty1.service display-manager.service plymouth-quit.service
+Conflicts=getty@tty1.service
+
+[Service]
+Type=oneshot
+ExecStart=/usr/bin/mpv --no-config --fs --vo=drm --drm-mode=preferred \
+  --no-audio --really-quiet --no-terminal --osc=no \
+  --input-vo-keyboard=no /opt/luca-boot-intro/intro.mp4
+StandardInput=tty
+StandardOutput=journal
+TTYPath=/dev/tty1
+TTYReset=yes
+TTYVHangup=yes
+TTYVTDisallocate=yes
+
+[Install]
+WantedBy=sysinit.target
