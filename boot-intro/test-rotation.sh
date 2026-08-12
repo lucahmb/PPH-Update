@@ -5,7 +5,13 @@
 # Buchstabe lesbar/richtig-herum auf dem Panel erscheint, und mir den
 # Buchstaben sagen (z.B. "C") - dann baue ich genau diese Transformation
 # fest in intro.mp4 ein.
-set -euo pipefail
+set -uo pipefail
+
+if [[ ${EUID:-$(id -u)} -ne 0 ]]; then
+  echo "Bitte mit sudo ausfuehren: sudo $0" >&2
+  echo "(mpv --vo=drm braucht Root-Rechte fuer /dev/dri, genau wie der echte Boot-Service.)" >&2
+  exit 1
+fi
 
 HERE="$(cd "$(dirname "$0")" && pwd)"
 DIR="$HERE/build/rot-test"
@@ -40,9 +46,12 @@ for f in A B C D; do
   echo
   echo "=== Zeige TEST $f (6 Sekunden) ==="
   mpv --no-config --fs --vo=drm --drm-connector=0.DSI-2 \
-    --no-audio --image-display-duration=6 --loop=no \
-    --no-osc --no-terminal --really-quiet \
-    "$DIR/${f}.png" || true
+    --no-audio --image-display-duration=6 --loop=no --no-osc \
+    "$DIR/${f}.png"
+  status=$?
+  if [[ $status -ne 0 ]]; then
+    echo "!!! mpv ist mit Exit-Code $status fehlgeschlagen bei TEST $f - siehe Fehlermeldung oben." >&2
+  fi
 done
 
 echo
