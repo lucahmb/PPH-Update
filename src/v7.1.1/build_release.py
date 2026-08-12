@@ -50,7 +50,7 @@ for p in sorted(x for x in PAYLOAD.rglob('*') if x.is_file()):
     rel=p.relative_to(PAYLOAD).as_posix()
     mode='0755' if rel in {'start_pph_hub.sh','pph_hub/pph3_app.py','fieldctl.py','fielddctl.py','install_field_mode.sh','boot_intro/install.sh'} else '0644'
     files.append({'path':rel,'sha256':sha256(p),'mode':mode})
-manifest={'format':1,'product':'pph-funktest','version':'7.1.1','min_version':'7.1.0','max_version':'7.1.0','channel':'stable','build_name':'PPH 7.1.1 · Boot Intro','released':'2026-08-12','ui_module':'pph_hub/pph71_ui.py','features':[
+manifest={'format':1,'product':'pph-funktest','version':'7.1.1','min_version':'7.0.0','max_version':'7.1.0','channel':'stable','build_name':'PPH 7.1.1 · Boot Intro','released':'2026-08-12','ui_module':'pph_hub/pph71_ui.py','features':[
     'Adds a ~22s branded boot intro (video splash) for the 800x480 Pi display: grid draw-in, "Luca\'s / Projects" wordmark, status handshake, handoff to the app background',
     'Ships as boot_intro/ in the payload: intro.mp4, a systemd unit playing it fullscreen via mpv/DRM before login, and install.sh',
     'Requires one manual step after this update installs: sudo <app-dir>/boot_intro/install.sh (installs the systemd unit, needs root - same pattern as install_field_mode.sh)',
@@ -67,6 +67,6 @@ with tarfile.open(OUT,'r:gz') as tf:
     miss=sorted(req-names)
     if miss: raise SystemExit('Archive invalid: '+', '.join(miss))
 (OUT_DIR/'manifest.json').write_text(json.dumps(manifest,indent=2,ensure_ascii=False)+'\n',encoding='utf-8')
-channel={'product':'pph-funktest','channel':'stable','version':'7.1.1','released':'2026-08-12','build_name':'PPH 7.1.1 · Boot Intro','repository':'lucahmb/PPH-Update','package_url':'https://raw.githubusercontent.com/lucahmb/PPH-Update/main/packages/v7.1.1/pph-update-7.1.1-boot-intro.tar.gz','sha256':sha256(OUT),'min_version':'7.1.0','max_version':'7.1.0','notes':['New: branded ~22s boot intro video for the Pi display (Luca\'s / Projects)','After check update, run once: sudo <app-dir>/boot_intro/install.sh (needs sudo to install the systemd unit)','No UI/backend changes otherwise - Pulse Deck UI carried forward unchanged']}
+channel={'product':'pph-funktest','channel':'stable','version':'7.1.1','released':'2026-08-12','build_name':'PPH 7.1.1 · Boot Intro','repository':'lucahmb/PPH-Update','package_url':'https://raw.githubusercontent.com/lucahmb/PPH-Update/main/packages/v7.1.1/pph-update-7.1.1-boot-intro.tar.gz','sha256':sha256(OUT),'min_version':'7.0.0','max_version':'7.1.0','notes':['New: branded ~22s boot intro video for the Pi display (Luca\'s / Projects)','After check update, run once: sudo <app-dir>/boot_intro/install.sh (needs sudo to install the systemd unit)','No UI/backend changes otherwise - Pulse Deck UI carried forward unchanged']}
 (ROOT/'channels/stable.json').write_text(json.dumps(channel,indent=2,ensure_ascii=False)+'\n',encoding='utf-8')
 print(OUT)
