@@ -1,10 +1,15 @@
 #!/usr/bin/env python3
 """Rendert die Einzelbilder der Boot-Intro als PNG-Sequenz.
 
-Panel ist ein natives 720x1280 DSI-Hochformat-Display (kein 800x480 HDMI
-wie urspruenglich angenommen - per `mpv --drm-mode=help` auf dem Geraet
-bestaetigt: "Mode 0: 720x1280"). Die gesamte Komposition ist fuer dieses
-Hochformat gebaut, kein nachtraegliches Rotieren/Stauchen mehr noetig.
+Der DRM-Puffer des Panels ist nativ 720x1280 (per `mpv --drm-mode=help`
+bestaetigt), das Geraet ist aber physisch quer (Landscape) verbaut - die
+Buffer-Achse entspricht also nicht der Blickrichtung. --video-rotate in
+mpv hat sich als unzuverlaessig erwiesen (das schlichte --vo=drm scheint
+es zu ignorieren). Deshalb wird hier bewusst wieder in der tatsaechlichen
+Blickrichtung komponiert (1280x720 Landscape) und erst beim Encodieren
+in build.sh per `ffmpeg -vf transpose=1` fest in den 720x1280-Puffer
+hineingedreht - die Rotation steckt danach in den Pixeln der Datei
+selbst, unabhaengig von mpv/vo-Eigenheiten.
 
 Storyboard (Sekunden, insgesamt ~19s):
   0.0-0.4  Power-On          - einzelner Punkt zuendet mittig
@@ -31,7 +36,7 @@ from PIL import Image, ImageDraw, ImageFont, ImageFilter
 
 # ---- Konfiguration --------------------------------------------------------
 
-WIDTH, HEIGHT = 720, 1280
+WIDTH, HEIGHT = 1280, 720
 FPS = 25
 DURATION = 19.0
 FRAME_COUNT = int(DURATION * FPS)
@@ -48,7 +53,7 @@ MUTED = (0x9A, 0xA7, 0x9E)
 CYAN = (0x4F, 0xE3, 0xC1)
 GREEN = (0xA6, 0xF0, 0x6A)
 
-CENTER = (WIDTH // 2, 520)
+CENTER = (WIDTH // 2, 260)
 
 FONT_CANDIDATES_BOLD = [
     "/usr/share/fonts/truetype/dejavu/DejaVuSans-Bold.ttf",  # Raspberry Pi OS

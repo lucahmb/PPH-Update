@@ -1,0 +1,240 @@
+{
+  "format": 1,
+  "product": "pph-funktest",
+  "version": "7.1.5",
+  "min_version": "7.1.0",
+  "max_version": "7.1.4",
+  "channel": "stable",
+  "build_name": "PPH 7.1.5 · Boot Intro Landscape Mount Fix",
+  "released": "2026-08-12",
+  "ui_module": "pph_hub/pph71_ui.py",
+  "features": [
+    "Fix: boot intro still displayed sideways in 7.1.4 - the panel is mounted landscape even though its raw DRM buffer is portrait (720x1280); mpv --video-rotate turned out unreliable with --vo=drm in earlier attempts",
+    "Content is composed in the real viewing orientation again (1280x720) and the rotation into the 720x1280 buffer is now baked into the video file itself at build time (ffmpeg transpose), not left to a playback-time flag",
+    "If this is rotated the wrong way (mirrored/upside-down) on your specific mount, it is a one-line fix (transpose=1 -> transpose=2) - let me know",
+    "Re-run sudo <app-dir>/boot_intro/install.sh after this update to pick up the new video",
+    "No UI/backend changes - carries forward 7.1.0 Pulse Deck UI unchanged"
+  ],
+  "files": [
+    {
+      "path": "boot_intro/install.sh",
+      "sha256": "4e8dcb61a53343f34d4828c066a66596587b28449e0a736330592805b521c640",
+      "mode": "0755"
+    },
+    {
+      "path": "boot_intro/intro.mp4",
+      "sha256": "0e91a0813b822cfdcb7ec9a8f2cec50473aa727d6154cf35cdf4bfb9f6e36163",
+      "mode": "0644"
+    },
+    {
+      "path": "boot_intro/pph-boot-intro.service",
+      "sha256": "ca2c9df9fa376eaf0153c17c4246d3e1e7d04d5fec6abcde77741326f1dbd328",
+      "mode": "0644"
+    },
+    {
+      "path": "fieldctl.py",
+      "sha256": "a1c8342d63c97ed9022c38e00516ca004ea31aba62a522c3e1c5ce5c6eccb869",
+      "mode": "0755"
+    },
+    {
+      "path": "fielddctl.py",
+      "sha256": "1bffe11f144dfef417acf310890f90910621586bcf0f44902c2073f9f09bf877",
+      "mode": "0755"
+    },
+    {
+      "path": "install_field_mode.sh",
+      "sha256": "be809ccbee23dfb38948fb9d5cf1cb8c1345e18522ea02458f13af4d189bd4bf",
+      "mode": "0755"
+    },
+    {
+      "path": "pph_hub/access_point.py",
+      "sha256": "670b5c3aaf65143122cd6c932e820edafeb1f7ec368bf20c58f89df119edc5da",
+      "mode": "0644"
+    },
+    {
+      "path": "pph_hub/access_ui.py",
+      "sha256": "45f3d46d6943735195219d3e3895623e91fb6e5db80e385d8451d1a67b2e34fd",
+      "mode": "0644"
+    },
+    {
+      "path": "pph_hub/pph32_ui.py",
+      "sha256": "3370234df200e92025296206f2a487a07eb1faae87e65f9828fc213a4df43561",
+      "mode": "0644"
+    },
+    {
+      "path": "pph_hub/pph3_app.py",
+      "sha256": "8df180b35598f8dc414a9a035912f95a914b78c7fcac7a1894ffd9d9458d5033",
+      "mode": "0755"
+    },
+    {
+      "path": "pph_hub/pph3_ui.py",
+      "sha256": "1366e856f490ffc8ad3e88b28473b531735dd33a8c4bc8b48dec3dbe60d45822",
+      "mode": "0644"
+    },
+    {
+      "path": "pph_hub/pph411_touch.py",
+      "sha256": "c7d75c48541a5996cd21face26d5547ee5047ec287324ee5371de7208ee2cd09",
+      "mode": "0644"
+    },
+    {
+      "path": "pph_hub/pph412_paged.py",
+      "sha256": "699a77517a9f6004815361717744dd62c278b8c6c9bcb0054a1bfc2e1957898f",
+      "mode": "0644"
+    },
+    {
+      "path": "pph_hub/pph41_ui.py",
+      "sha256": "be1009d87d32d46dbff7891abf8e30dfa70d803838c83db7e0d1610a4f4d03ff",
+      "mode": "0644"
+    },
+    {
+      "path": "pph_hub/pph42_full_ui.py",
+      "sha256": "bf53d946ab16608e0f0f853a65ca2d6a19d7af16bd60c55cb25439b3be48c6d3",
+      "mode": "0644"
+    },
+    {
+      "path": "pph_hub/pph4_theme.py",
+      "sha256": "6100f6b5022a7a3ea495afa68deb6227ca0f3340b274b3ff8cbb0836d75006bc",
+      "mode": "0644"
+    },
+    {
+      "path": "pph_hub/pph50_platform.py",
+      "sha256": "66b5e7d8e903c35356568724b9c6e7cd2fce8dbd79c00f03e6c1b802c9ac663a",
+      "mode": "0644"
+    },
+    {
+      "path": "pph_hub/pph51_ui.py",
+      "sha256": "1a70698837bde4a6e8454f37753ea06853d4c562b251a0100edda277748ef10d",
+      "mode": "0644"
+    },
+    {
+      "path": "pph_hub/pph6_ui.py",
+      "sha256": "08e06bf0a1aa82e34f650d93f41568792f9d2fa96575a598cd66cc4ed346a500",
+      "mode": "0644"
+    },
+    {
+      "path": "pph_hub/pph71_ui.py",
+      "sha256": "82ced4ff95f685e00d01b750cd6755bcb3319d52381bf7f30983d73764b2c907",
+      "mode": "0644"
+    },
+    {
+      "path": "pph_hub/pph7_ui.py",
+      "sha256": "8760af1387e52f339226cff058b7636f513982522919361491e55d60461e3692",
+      "mode": "0644"
+    },
+    {
+      "path": "pph_version.py",
+      "sha256": "2b90579e33d9ee840f146fb637488656ef7942cf434dbbed434f43194d41476e",
+      "mode": "0644"
+    },
+    {
+      "path": "start_pph_hub.sh",
+      "sha256": "f4a054ba7727f562378920b760431ee452e105f0afb2f16dd9f5755a7fe0b3c7",
+      "mode": "0755"
+    },
+    {
+      "path": "test_access_point_310.py",
+      "sha256": "1212d3ea80748fa489cdbf696c2be130d8800971958c123accc7332a7a7265df",
+      "mode": "0644"
+    },
+    {
+      "path": "test_access_point_311.py",
+      "sha256": "74bf8db2c409d6d4664a1cd5056c450cf2276513ecee92f74d2fc4b662d9e495",
+      "mode": "0644"
+    },
+    {
+      "path": "test_access_point_313.py",
+      "sha256": "251a1b154d05395f33fded65df8fc7ae455d374196b626e231586bcb54cb2b47",
+      "mode": "0644"
+    },
+    {
+      "path": "test_access_point_314.py",
+      "sha256": "fb4d0b335ade906f55d39d72a98e60f9b912196b6ce62c39ee252c86e1617f41",
+      "mode": "0644"
+    },
+    {
+      "path": "test_access_point_511.py",
+      "sha256": "280ff71411ad0ada40eef69472541cb0be8a75da1d37d825394964ab7ecb0392",
+      "mode": "0644"
+    },
+    {
+      "path": "test_github_updates_29.py",
+      "sha256": "5e55f667b61fbe74ed3556f0d12ac469efa917ce964ba3e3e08731fc2416c447",
+      "mode": "0644"
+    },
+    {
+      "path": "test_launcher_513.py",
+      "sha256": "4ba2ee8c1e1505422cedd0f29ebd0bf5b2c59474cc3817d44b701f7f8601afa0",
+      "mode": "0644"
+    },
+    {
+      "path": "test_ui_300.py",
+      "sha256": "5ffca327b6987bb26c296e015544c63b0061da6de83efbfe5698a4cd312deced",
+      "mode": "0644"
+    },
+    {
+      "path": "test_ui_315.py",
+      "sha256": "7b1265b6b9f6fb53f2928b0f552c4d06a852da106bea594b6b8d04140ba57a9c",
+      "mode": "0644"
+    },
+    {
+      "path": "test_ui_317.py",
+      "sha256": "7d128c317d26e420d1e9948181dee317c0df109d52799c087ca563f2948f382e",
+      "mode": "0644"
+    },
+    {
+      "path": "test_ui_320.py",
+      "sha256": "1c7c5f72e39558d078d0358de686c534bdd212da4eb2b86572770a08c4b9a2b7",
+      "mode": "0644"
+    },
+    {
+      "path": "test_ui_400.py",
+      "sha256": "c6b93d683978e2dd9916fa06d8663d40d1d674503052ea8e80e5ddfb35e59387",
+      "mode": "0644"
+    },
+    {
+      "path": "test_ui_410.py",
+      "sha256": "54815efd4a11ef427689c7b354177f572b07089350bedd1d9308ff7168c07ec3",
+      "mode": "0644"
+    },
+    {
+      "path": "test_ui_411.py",
+      "sha256": "044254bb784c3d254ab8b3e28b8e3c353ca0cca75c1abcdd8ca0d02ebcde2650",
+      "mode": "0644"
+    },
+    {
+      "path": "test_ui_412.py",
+      "sha256": "f33c85ca34e5168a1448e8bd110c9f1245a640f8e7c9f82e6334f47c725f082e",
+      "mode": "0644"
+    },
+    {
+      "path": "test_ui_420.py",
+      "sha256": "206b36979984d580e8773858fcd5c577071c1a0c78d038b6120f5bb2b8968fb4",
+      "mode": "0644"
+    },
+    {
+      "path": "test_ui_512.py",
+      "sha256": "5fbd643b63570c6d6b524de743fd9c362024d66a15ec16e80df9d54401df361b",
+      "mode": "0644"
+    },
+    {
+      "path": "test_ui_520.py",
+      "sha256": "0e2d602b48bd70eea3a06b127259c72efb3ddf491069466efced149c5233ae4f",
+      "mode": "0644"
+    },
+    {
+      "path": "test_ui_521.py",
+      "sha256": "7e35fe18ccaf2b551cf225df591d063b927a8b772a59109567b2de64da6fbba0",
+      "mode": "0644"
+    },
+    {
+      "path": "test_ui_522.py",
+      "sha256": "3b428a01284388b0bf777a88b99d799e4ef4725b948dd7b7d8b1bf9e77f2b1f0",
+      "mode": "0644"
+    },
+    {
+      "path": "test_upgrade_316.py",
+      "sha256": "f57b61c3a506419ce17f23acaaf1b3deea313062573e5491b35e4a2a1cb78751",
+      "mode": "0644"
+    }
+  ]
+}
