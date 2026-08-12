@@ -1,17 +1,34 @@
 #!/usr/bin/env bash
-# Live-Rotationstest direkt auf der Konsole, ohne Reboot. Zeigt 4
-# Testbilder (A-D) nacheinander je 6s, jedes gross beschriftet und in
-# eine andere Rotation/Kein-Rotation gebracht. Einfach ablesen, welcher
-# Buchstabe lesbar/richtig-herum auf dem Panel erscheint, und mir den
+# Live-Rotationstest, laeuft als normaler Wayland-Client im bereits
+# laufenden Desktop (labwc) - kein sudo, kein --vo=drm, kein Kampf um
+# DRM-Master. Zeigt 4 Testbilder (A-D) nacheinander je 6s. Einfach
+# ablesen, welcher Buchstabe lesbar/richtig-herum erscheint, und mir den
 # Buchstaben sagen (z.B. "C") - dann baue ich genau diese Transformation
 # fest in intro.mp4 ein.
+#
+# NICHT mit sudo ausfuehren - der Wayland-Socket gehoert dem normalen
+# Desktop-User, root sieht ihn i.d.R. nicht.
 set -uo pipefail
 
-if [[ ${EUID:-$(id -u)} -ne 0 ]]; then
-  echo "Bitte mit sudo ausfuehren: sudo $0" >&2
-  echo "(mpv --vo=drm braucht Root-Rechte fuer /dev/dri, genau wie der echte Boot-Service.)" >&2
+if [[ ${EUID:-$(id -u)} -eq 0 ]]; then
+  echo "Bitte OHNE sudo ausfuehren (als der Desktop-User, z.B. luca): bash $0" >&2
   exit 1
 fi
+
+export XDG_RUNTIME_DIR="${XDG_RUNTIME_DIR:-/run/user/$(id -u)}"
+if [[ -z "${WAYLAND_DISPLAY:-}" ]]; then
+  for cand in "$XDG_RUNTIME_DIR"/wayland-*; do
+    [[ -S "$cand" ]] || continue
+    export WAYLAND_DISPLAY="$(basename "$cand")"
+    break
+  done
+fi
+if [[ -z "${WAYLAND_DISPLAY:-}" ]]; then
+  echo "Kein Wayland-Socket in $XDG_RUNTIME_DIR gefunden. Laeuft der Desktop?" >&2
+  echo "Falls per SSH: WAYLAND_DISPLAY=wayland-0 (o.ae.) manuell setzen und erneut versuchen." >&2
+  exit 1
+fi
+echo "Nutze XDG_RUNTIME_DIR=$XDG_RUNTIME_DIR WAYLAND_DISPLAY=$WAYLAND_DISPLAY"
 
 HERE="$(cd "$(dirname "$0")" && pwd)"
 DIR="$HERE/build/rot-test"
@@ -45,7 +62,7 @@ gen D "transpose=1,transpose=1"     # 180 Grad
 for f in A B C D; do
   echo
   echo "=== Zeige TEST $f (6 Sekunden) ==="
-  mpv --no-config --fs --vo=drm \
+  mpv --no-config --fs \
     --no-audio --image-display-duration=6 --loop=no --no-osc \
     "$DIR/${f}.png"
   status=$?
