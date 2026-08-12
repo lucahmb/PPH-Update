@@ -45,7 +45,7 @@ gen D "transpose=1,transpose=1"     # 180 Grad
 for f in A B C D; do
   echo
   echo "=== Zeige TEST $f (6 Sekunden) ==="
-  mpv --no-config --fs --vo=drm --drm-connector=0.DSI-2 \
+  mpv --no-config --fs --vo=drm \
     --no-audio --image-display-duration=6 --loop=no --no-osc \
     "$DIR/${f}.png"
   status=$?

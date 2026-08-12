@@ -1,17 +1,17 @@
 {
   "product": "pph-funktest",
   "channel": "stable",
-  "version": "7.1.6",
+  "version": "7.1.7",
   "released": "2026-08-12",
-  "build_name": "PPH 7.1.6 · Boot Intro Autostart Fix",
+  "build_name": "PPH 7.1.7 · Boot Intro Connector Fix",
   "repository": "lucahmb/PPH-Update",
-  "package_url": "https://raw.githubusercontent.com/lucahmb/PPH-Update/main/packages/v7.1.6/pph-update-7.1.6-boot-intro-autostart-fix.tar.gz",
-  "sha256": "1e440e8bf74568182905eb9f475e126c060d7004eefe3509a6ce0f628d6a9744",
+  "package_url": "https://raw.githubusercontent.com/lucahmb/PPH-Update/main/packages/v7.1.7/pph-update-7.1.7-boot-intro-connector-fix.tar.gz",
+  "sha256": "c273e3a8cffb6a09b4f7d1125b6d5417d6d0058cfad61608afbf99e553f3e23a",
   "min_version": "7.1.0",
-  "max_version": "7.1.5",
+  "max_version": "7.1.6",
   "notes": [
-    "Fix: PPH not auto-launching - removed Conflicts=getty@tty1.service from the boot-intro unit (likely broke a getty-autologin autostart chain)",
-    "After check update, re-run: sudo <app-dir>/boot_intro/install.sh",
-    "Still investigating the intro orientation together - no video content change in this release"
+    "Fix: boot intro showed nothing - the pinned DRM connector index was not stable, now auto-detected",
+    "Orientation still pending - run boot_intro/test-rotation.sh with sudo to identify it live",
+    "After check update, re-run: sudo <app-dir>/boot_intro/install.sh"
   ]
 }
