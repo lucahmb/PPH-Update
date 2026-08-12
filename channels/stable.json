@@ -1,16 +1,17 @@
 {
   "product": "pph-funktest",
   "channel": "stable",
-  "version": "7.1.3",
+  "version": "7.1.4",
   "released": "2026-08-12",
-  "build_name": "PPH 7.1.3 · Boot Intro Orientation Fix",
+  "build_name": "PPH 7.1.4 · Boot Intro Portrait Rebuild",
   "repository": "lucahmb/PPH-Update",
-  "package_url": "https://raw.githubusercontent.com/lucahmb/PPH-Update/main/packages/v7.1.3/pph-update-7.1.3-boot-intro-orientation-fix.tar.gz",
-  "sha256": "fb47854a314cd42a825c5def101322335c4a9de05c0fc7978527a005270b370a",
+  "package_url": "https://raw.githubusercontent.com/lucahmb/PPH-Update/main/packages/v7.1.4/pph-update-7.1.4-boot-intro-portrait.tar.gz",
+  "sha256": "6d6d3d97e7f354ccf17a4630ccfe9a1c72f90754ff2325aa1cbfe8fa58958921",
   "min_version": "7.1.0",
-  "max_version": "7.1.2",
+  "max_version": "7.1.3",
   "notes": [
-    "Fix: boot intro now plays horizontal (the panel was never actually rotated - 7.1.2 guessed wrong)",
+    "Fix: boot intro rebuilt natively for the real 720x1280 DSI panel - fixes the vertical/boring look at the source instead of rotating a landscape clip",
+    "Livelier and snappier transitions on the larger panel",
     "After check update, re-run: sudo <app-dir>/boot_intro/install.sh",
     "No other changes"
   ]
