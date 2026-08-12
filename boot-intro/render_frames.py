@@ -5,15 +5,21 @@ Storyboard (Sekunden):
   0.0-0.5  Power-On          - einzelner Punkt zuendet mittig
   0.5-5.0  Grid Init         - Netzwerk-Gitter baut sich radial auf, Scanline-Sweep
   5.0-10.0 Wordmark          - "Luca's" wischt sich ein, "PROJECTS" faded, Ladebalken
-  10.0-17.0 Status-Handshake - Statuszeilen + Punktreihe + Prozentzaehler
+  10.0-17.0 Status-Handshake - Statuszeilen (Typewriter) + Punktreihe + Prozentzaehler
   17.0-21.0 Connect/Handoff  - Flash, Punkte pulsen gruen, Wordmark schrumpft ins Eck, Grid loest sich auf
   21.0-22.0 Hold             - reiner Hintergrund, identisch zum BG der echten App
+
+Durchgehend aktiv: driftende/twinkelnde Hintergrundpartikel, ein
+"atmendes" Glow hinter dem Schriftzug, periodische leise Scanline-Sweeps
+und ein sehr sanfter Ken-Burns-Zoom uebers gesamte Bild - macht die
+Sequenz auch in den ruhigeren Phasen sichtbar lebendig statt statisch.
 
 Farben aus pph_hub/pph71_ui.py (aktuelles PPH-7.1.0-Theme) uebernommen,
 Beschriftung durch "Luca's / Projects" ersetzt.
 """
 import math
 import os
+import random
 from pathlib import Path
 
 from PIL import Image, ImageDraw, ImageFont, ImageFilter
@@ -84,6 +90,36 @@ def blend_over(base, layer):
     base.paste(layer, (0, 0), layer)
 
 
+# ---- Ambiente: driftende Partikel ------------------------------------------
+
+_rng = random.Random(20260812)
+PARTICLES = [
+    {
+        "x": _rng.uniform(0, WIDTH),
+        "y": _rng.uniform(0, HEIGHT),
+        "phase": _rng.uniform(0, math.tau),
+        "speed": _rng.uniform(0.12, 0.32),
+        "drift": _rng.uniform(6, 20),
+        "size": _rng.uniform(0.8, 1.9),
+    }
+    for _ in range(46)
+]
+
+
+def draw_particles(draw, t, alpha_mult=1.0):
+    if alpha_mult <= 0:
+        return
+    for p in PARTICLES:
+        twinkle = 0.5 + 0.5 * math.sin(t * p["speed"] * math.tau + p["phase"])
+        a = int(75 * twinkle * alpha_mult)
+        if a <= 1:
+            continue
+        x = p["x"] + math.sin(t * 0.09 + p["phase"]) * p["drift"]
+        y = p["y"] + math.cos(t * 0.07 + p["phase"] * 1.3) * p["drift"] * 0.6
+        r = p["size"]
+        draw.ellipse([x - r, y - r, x + r, y + r], fill=CYAN + (a,))
+
+
 # ---- Phase 1: Grid ---------------------------------------------------------
 
 GRID_STEP = 40
@@ -134,7 +170,7 @@ def draw_grid(draw, t_grid, base_alpha=1.0):
             draw.ellipse([x - 1.4, y - 1.4, x + 1.4, y + 1.4], fill=BORDER + (a,))
 
 
-def draw_scanline(draw, t):
+def draw_scanline(draw, t, alpha_scale=1.0):
     """t: 0..1 einmaliger Sweep von oben nach unten."""
     if not (0.0 <= t <= 1.0):
         return
@@ -143,8 +179,17 @@ def draw_scanline(draw, t):
     for i in range(band):
         yy = y - band // 2 + i
         if 0 <= yy < HEIGHT:
-            a = int(60 * (1 - abs(i - band / 2) / (band / 2)))
-            draw.line([(0, yy), (WIDTH, yy)], fill=CYAN + (a,), width=1)
+            a = int(60 * (1 - abs(i - band / 2) / (band / 2)) * alpha_scale)
+            if a > 0:
+                draw.line([(0, yy), (WIDTH, yy)], fill=CYAN + (a,), width=1)
+
+
+def draw_periodic_sweep(draw, t, period=4.5, active_frac=0.3, alpha_scale=0.35):
+    """Leiser, wiederkehrender Scanline-Sweep, damit das Grid im Hintergrund
+    waehrend der ruhigeren Phasen nicht komplett statisch wirkt."""
+    phase = (t % period) / period
+    if phase < active_frac:
+        draw_scanline(draw, phase / active_frac, alpha_scale=alpha_scale)
 
 
 # ---- Phase 2: Wordmark -----------------------------------------------------
@@ -153,7 +198,22 @@ WORDMARK = "Luca's"
 TAGLINE = "P R O J E C T S"
 
 
-def draw_wordmark(img, draw, wipe_t, tagline_a, bar_t, scale=1.0, offset=(0, 0)):
+def draw_wordmark_glow(img, t, scale=1.0, offset=(0, 0)):
+    """Langsam atmendes Glow hinter dem Schriftzug - haelt die sonst
+    ruhige Wordmark-Phase sichtbar in Bewegung."""
+    breathe = 0.5 + 0.5 * math.sin(t * 0.9)
+    radius = (70 + 14 * breathe) * scale
+    alpha = int((50 + 25 * breathe))
+    cx = CENTER[0] + offset[0]
+    cy = CENTER[1] - 6 * scale + offset[1]
+    layer = Image.new("RGBA", img.size, (0, 0, 0, 0))
+    ldraw = ImageDraw.Draw(layer)
+    ldraw.ellipse([cx - radius, cy - radius, cx + radius, cy + radius], fill=CYAN + (alpha,))
+    layer = layer.filter(ImageFilter.GaussianBlur(22 * scale + 6))
+    blend_over(img, layer)
+
+
+def draw_wordmark(img, draw, wipe_t, tagline_a, bar_t, scale=1.0, offset=(0, 0), t=0.0):
     font = FONT_WORDMARK(int(58 * scale))
     tag_font = FONT_WORDMARK(int(13 * scale))
 
@@ -197,10 +257,25 @@ def draw_wordmark(img, draw, wipe_t, tagline_a, bar_t, scale=1.0, offset=(0, 0))
             ldraw2.rectangle(
                 [bar_x, bar_y, bar_x + bar_w, bar_y + 3 * scale], fill=BORDER + (200,)
             )
+            fill_w = bar_w * ease_out_cubic(bar_t)
             ldraw2.rectangle(
-                [bar_x, bar_y, bar_x + bar_w * ease_out_cubic(bar_t), bar_y + 3 * scale],
+                [bar_x, bar_y, bar_x + fill_w, bar_y + 3 * scale],
                 fill=CYAN + (255,),
             )
+            if bar_t >= 0.999:
+                # Ladebalken ist fertig - ein leiser Comet laeuft weiter drueber,
+                # damit die Statuszeile nicht wie eingefroren wirkt.
+                pos = (math.sin(t * 1.3) + 1) / 2
+                comet_x = bar_x + bar_w * pos
+                cr = 5 * scale
+                comet = Image.new("RGBA", img.size, (0, 0, 0, 0))
+                cdraw = ImageDraw.Draw(comet)
+                cdraw.ellipse(
+                    [comet_x - cr, bar_y - cr + 1.5 * scale, comet_x + cr, bar_y + cr + 1.5 * scale],
+                    fill=TEXT + (220,),
+                )
+                comet = comet.filter(ImageFilter.GaussianBlur(3))
+                blend_over(layer2, comet)
             blend_over(img, layer2)
 
     return x, y, w, h
@@ -213,7 +288,8 @@ DOT_COUNT = 6
 
 
 def draw_status(draw, t_phase):
-    """t_phase: 0..1 Fortschritt innerhalb Phase 3."""
+    """t_phase: 0..1 Fortschritt innerhalb Phase 3. Zeilen werden per
+    Typewriter-Effekt Zeichen fuer Zeichen aufgebaut."""
     font = FONT_MONO(13)
     line_h = 22
     start_x, start_y = 36, HEIGHT - 36 - line_h * len(STATUS_LINES)
@@ -224,15 +300,18 @@ def draw_status(draw, t_phase):
         if appear_t <= 0:
             continue
         appear_t = min(1.0, appear_t)
-        a = int(255 * ease_out_cubic(appear_t))
         y = start_y + i * line_h
         dots = "." * max(3, 22 - len(label))
-        draw.text((start_x, y), f"{label} {dots}", font=font, fill=TEXT + (a,))
-        ok_t = min(1.0, max(0.0, (appear_t - 0.6) / 0.4))
-        if ok_t > 0:
+        full = f"{label} {dots}"
+        type_t = min(1.0, appear_t * 1.6)
+        n_chars = max(1, int(round(len(full) * ease_out_cubic(type_t))))
+        shown = full[:n_chars]
+        draw.text((start_x, y), shown, font=font, fill=TEXT + (255,))
+        ok_t = min(1.0, max(0.0, (appear_t - 0.7) / 0.3))
+        if ok_t > 0 and n_chars >= len(full):
             ok_color = lerp_color(MUTED, GREEN, ok_t)
-            bbox = draw.textbbox((start_x, y), f"{label} {dots} ", font=font)
-            draw.text((bbox[2], y), "OK", font=font, fill=ok_color + (a,))
+            bbox = draw.textbbox((start_x, y), full + " ", font=font)
+            draw.text((bbox[2], y), "OK", font=font, fill=ok_color + (255,))
 
     dot_stagger = 1.0 / (DOT_COUNT + 1)
     dot_y = start_y - 30
@@ -266,6 +345,8 @@ def render():
         overlay = Image.new("RGBA", (WIDTH, HEIGHT), (0, 0, 0, 0))
         odraw = ImageDraw.Draw(overlay)
 
+        particle_alpha = max(0.0, min(1.0, (t - 0.4) / 0.6))
+
         if t < 0.5:
             # Phase 0: Power-On Punkt waechst ein
             p = ease_out_cubic(t / 0.5)
@@ -277,22 +358,30 @@ def render():
             )
 
         elif t < 5.0:
+            draw_particles(odraw, t, particle_alpha)
             tp = (t - 0.5) / 4.5
             draw_grid(odraw, tp)
             if tp < 0.55:
                 draw_scanline(odraw, tp / 0.55)
 
         elif t < 10.0:
+            draw_particles(odraw, t, particle_alpha)
             draw_grid(odraw, 1.0, base_alpha=0.22)
+            draw_periodic_sweep(odraw, t - 5.0)
             tp = (t - 5.0) / 5.0
             wipe_t = min(1.0, tp / 0.5)
             tagline_a = max(0.0, min(1.0, (tp - 0.45) / 0.35))
             bar_t = max(0.0, min(1.0, (tp - 0.55) / 0.45))
-            draw_wordmark(img, odraw, wipe_t, tagline_a, bar_t)
+            if wipe_t > 0.05:
+                draw_wordmark_glow(img, t)
+            draw_wordmark(img, odraw, wipe_t, tagline_a, bar_t, t=t)
 
         elif t < 17.0:
+            draw_particles(odraw, t, particle_alpha)
             draw_grid(odraw, 1.0, base_alpha=0.22)
-            draw_wordmark(img, odraw, 1.0, 1.0, 1.0)
+            draw_periodic_sweep(odraw, t - 5.0)
+            draw_wordmark_glow(img, t)
+            draw_wordmark(img, odraw, 1.0, 1.0, 1.0, t=t)
             tp = (t - 10.0) / 7.0
             draw_status(odraw, tp)
 
@@ -300,6 +389,7 @@ def render():
             tp = (t - 17.0) / 4.0
             grid_alpha = max(0.0, 0.22 * (1 - min(1.0, tp / 0.6)))
             draw_grid(odraw, 1.0, base_alpha=grid_alpha)
+            draw_particles(odraw, t, particle_alpha * (1 - min(1.0, tp / 0.6)))
 
             # Flash + synchrones Gruen-Pulsieren der Punkte kurz zu Beginn
             if tp < 0.3:
@@ -330,8 +420,7 @@ def render():
             offset = (target_offset[0] * shrink_t, target_offset[1] * shrink_t)
             wm_alpha_layer = Image.new("RGBA", (WIDTH, HEIGHT), (0, 0, 0, 0))
             wdraw = ImageDraw.Draw(wm_alpha_layer)
-            draw_wordmark(img, wdraw, 1.0, 1.0, 1.0, scale=scale, offset=offset)
-            fade = 1.0 - max(0.0, min(1.0, (tp - 0.55) / 0.45)) * 0.0
+            draw_wordmark(img, wdraw, 1.0, 1.0, 1.0, scale=scale, offset=offset, t=t)
             blend_over(img, wm_alpha_layer)
 
             # Restliches Overlay (Grid/Flash) ausblenden lassen ueber base image
@@ -344,6 +433,16 @@ def render():
             pass  # Phase 5: reiner BG-Hintergrund, identisch zur echten App
 
         blend_over(img, overlay)
+
+        # Sehr sanfter Ken-Burns-Zoom uebers gesamte Video, damit das Bild
+        # auch in ruhigen Momenten nie ganz stillsteht.
+        zoom = 1.0 + 0.045 * (t / DURATION)
+        if zoom > 1.0005:
+            nw, nh = int(WIDTH * zoom), int(HEIGHT * zoom)
+            big = img.resize((nw, nh), Image.LANCZOS)
+            left, top = (nw - WIDTH) // 2, (nh - HEIGHT) // 2
+            img = big.crop((left, top, left + WIDTH, top + HEIGHT))
+
         img.save(OUT_DIR / f"frame_{frame_idx:05d}.png")
 
     print(f"{FRAME_COUNT} Frames geschrieben nach {OUT_DIR}")

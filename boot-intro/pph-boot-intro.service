@@ -1,13 +1,18 @@
 [Unit]
 Description=Luca's Projects Boot Intro
 DefaultDependencies=no
-After=local-fs.target systemd-user-sessions.service
-Before=getty@tty1.service display-manager.service plymouth-quit.service
+After=local-fs.target systemd-user-sessions.service plymouth-start.service
+Before=getty@tty1.service display-manager.service
 Conflicts=getty@tty1.service
 
 [Service]
 Type=oneshot
+# Plymouth still holds the DRM master at this point (After=plymouth-start.service
+# only waits for it to have started, not stopped) - hand control back the same
+# way plymouth-quit.service itself does, before mpv tries to become DRM master.
+ExecStartPre=-/usr/bin/plymouth quit
 ExecStart=/usr/bin/mpv --no-config --fs --vo=drm --drm-mode=preferred \
+  --video-rotate=90 \
   --no-audio --really-quiet --no-terminal --osc=no \
   --input-vo-keyboard=no /opt/luca-boot-intro/intro.mp4
 StandardInput=tty

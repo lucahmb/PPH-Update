@@ -1,17 +1,18 @@
 {
   "product": "pph-funktest",
   "channel": "stable",
-  "version": "7.1.1",
+  "version": "7.1.2",
   "released": "2026-08-12",
-  "build_name": "PPH 7.1.1 · Boot Intro",
+  "build_name": "PPH 7.1.2 · Boot Intro Fix",
   "repository": "lucahmb/PPH-Update",
-  "package_url": "https://raw.githubusercontent.com/lucahmb/PPH-Update/main/packages/v7.1.1/pph-update-7.1.1-boot-intro.tar.gz",
-  "sha256": "5c2d85708e844731f7cb642616af4d473d604de62d6b2a0bbc64b22dbe4188c6",
-  "min_version": "7.0.0",
-  "max_version": "7.1.0",
+  "package_url": "https://raw.githubusercontent.com/lucahmb/PPH-Update/main/packages/v7.1.2/pph-update-7.1.2-boot-intro-fix.tar.gz",
+  "sha256": "02c5e002ec45cf807bb1a12bd7a192f0ae147d07cdd9dc0e343a351ea752043c",
+  "min_version": "7.1.0",
+  "max_version": "7.1.1",
   "notes": [
-    "New: branded ~22s boot intro video for the Pi display (Luca's / Projects)",
-    "After check update, run once: sudo <app-dir>/boot_intro/install.sh (needs sudo to install the systemd unit)",
-    "No UI/backend changes otherwise - Pulse Deck UI carried forward unchanged"
+    "Fix: boot intro now hands off from Plymouth correctly and plays rotated for the mounted panel",
+    "Intro is livelier now (ambient particles, breathing glow, typewriter log, comet, slow zoom)",
+    "After check update, re-run: sudo <app-dir>/boot_intro/install.sh",
+    "No UI/backend changes otherwise"
   ]
 }
