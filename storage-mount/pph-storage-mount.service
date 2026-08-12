@@ -1,0 +1,7 @@
+[Unit]
+Description=Ensure /mnt/storage (SSD) is mounted
+After=local-fs.target
+
+[Service]
+Type=oneshot
+ExecStart=/usr/local/sbin/pph-storage-mount.sh

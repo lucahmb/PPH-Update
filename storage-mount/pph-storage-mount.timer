@@ -1,0 +1,11 @@
+[Unit]
+Description=Periodically ensure /mnt/storage (SSD) stays mounted
+
+[Timer]
+OnBootSec=20s
+OnUnitActiveSec=2min
+Unit=pph-storage-mount.service
+AccuracySec=5s
+
+[Install]
+WantedBy=timers.target
