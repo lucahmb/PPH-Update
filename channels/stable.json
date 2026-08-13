@@ -1,16 +1,17 @@
 {
   "product": "pph-funktest",
   "channel": "stable",
-  "version": "7.1.8",
+  "version": "7.1.9",
   "released": "2026-08-12",
-  "build_name": "PPH 7.1.8 · Access Point Progress Screen",
+  "build_name": "PPH 7.1.9 · CPU Load & Power Menu",
   "repository": "lucahmb/PPH-Update",
-  "package_url": "https://raw.githubusercontent.com/lucahmb/PPH-Update/main/packages/v7.1.8/pph-update-7.1.8-ap-progress-screen.tar.gz",
-  "sha256": "e52f74a0054b9f76effe3dc8fbf5c3fc78986b1249004deb6d6cee4518de02d4",
+  "package_url": "https://raw.githubusercontent.com/lucahmb/PPH-Update/main/packages/v7.1.9/pph-update-7.1.9-cpu-power-menu.tar.gz",
+  "sha256": "929f9c728a87acb23d975c7177caf91996bec6688d71000d96b7ffd3e36a4233",
   "min_version": "7.1.0",
-  "max_version": "7.1.7",
+  "max_version": "7.1.8",
   "notes": [
-    "New: animated Access Point start/stop screen with live real-data checklist and progress bar, stays open until the AP is actually up/down",
-    "No boot-intro changes in this release"
+    "New: CPU-Auslastung + Uptime auf der System-Seite",
+    "New: Neustart/Herunterfahren-Menue unter Settings, mit Bestaetigungsdialog",
+    "Keine sonstigen Aenderungen"
   ]
 }
